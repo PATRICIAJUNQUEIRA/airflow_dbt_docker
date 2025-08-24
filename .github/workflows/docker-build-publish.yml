@@ -3,13 +3,6 @@ name: Docker Build & Publish
 on:
   push:
     branches: [ "main" ]
-    
-    paths:
-      - 'docker/**'
-      - 'dags/**'
-      - 'dbt/**'
-      - 'docker-compose.yml'
-      - 'Dockerfile'
   workflow_dispatch:
 
 jobs:
@@ -22,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      
+
       - name: Compute lowercase image name
         run: echo "IMAGE_NAME=ghcr.io/${GITHUB_REPOSITORY,,}/airflow" >> $GITHUB_ENV
 
@@ -39,8 +32,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: .                     
-          file: ./docker/Dockerfile      
+          context: .
+          file: ./docker/Dockerfile
           push: true
           tags: |
             ${{ env.IMAGE_NAME }}:latest
