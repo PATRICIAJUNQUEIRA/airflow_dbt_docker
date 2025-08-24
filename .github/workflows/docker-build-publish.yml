@@ -4,9 +4,9 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - "docker/airflow/Dockerfile"
-      - "requirements.txt"
+      - "docker/airflow/**"
       - ".github/workflows/docker-build-publish.yml"
+      - "requirements.txt"
   workflow_dispatch:
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
       packages: write
 
     concurrency:
-      group: docker-${{ github.ref }}
+      group: ghcr-build-${{ github.ref }}
       cancel-in-progress: true
 
     steps:
@@ -39,7 +39,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./docker/airflow/Dockerfile
+          file: docker/airflow/Dockerfile
           push: true
           tags: |
             ${{ env.IMAGE_NAME }}:latest
