@@ -1,3 +1,0 @@
-# Dependências do Airflow + dbt
-dbt-core==1.9.2
-dbt-athena-community==1.9.4
