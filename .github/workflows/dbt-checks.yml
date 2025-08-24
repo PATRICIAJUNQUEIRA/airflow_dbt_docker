@@ -2,46 +2,48 @@ name: dbt checks
 
 on:
   pull_request:
-  workflow_dispatch:
+    branches: [ main ]
 
 jobs:
-  dbt-compile:
+  dbt-parse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install dbt (athena)
+      - name: Install dbt + adapter (duckdb)
         run: |
           python -m pip install --upgrade pip
-          pip install "dbt-core==1.9.2" "dbt-athena-community==1.9.4"
+          pip install dbt-core==1.9.2 dbt-duckdb==1.9.0
 
-      # Usa dbt/profiles do repo; se não existir, cria um profiles.yml mínimo só para o CI
-      - name: Choose profiles dir
-        id: profiles
-        shell: bash
+      - name: Ensure dbt profiles.yml
         run: |
-          if [ -f dbt/profiles/profiles.yml ]; then
-            echo "dir=dbt/profiles" >> "$GITHUB_OUTPUT"
-          else
-            mkdir -p .github/dbt
-            cat > .github/dbt/profiles.yml <<'PROFILES'
-default:
+          mkdir -p dbt/profiles
+          if [ ! -f dbt/profiles/profiles.yml ]; then
+            cat > dbt/profiles/profiles.yml <<'PXY'
+pt_data_lab:
+  config:
+    send_anonymous_usage_stats: false
   outputs:
     ci:
       type: duckdb
       path: /tmp/ci.duckdb
+      schema: main
   target: ci
-PROFILES
-            echo "dir=.github/dbt" >> "$GITHUB_OUTPUT"
+PXY
           fi
 
       - name: dbt deps
-        run: dbt deps --project-dir dbt
+        env:
+          DBT_PROFILES_DIR: ${{ github.workspace }}/dbt/profiles
+        run: dbt deps --profiles-dir "$DBT_PROFILES_DIR"
 
       - name: dbt parse
-        run: dbt parse --project-dir dbt --profiles-dir "${{ steps.profiles.outputs.dir }}"
+        env:
+          DBT_PROFILES_DIR: ${{ github.workspace }}/dbt/profiles
+        run: dbt parse --profiles-dir "$DBT_PROFILES_DIR"
