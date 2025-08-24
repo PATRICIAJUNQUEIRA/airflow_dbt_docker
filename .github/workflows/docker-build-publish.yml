@@ -1,5 +1,4 @@
 name: Docker Build & Publish
-
 on:
   push:
     branches: [ "main" ]
@@ -11,7 +10,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-
     steps:
       - uses: actions/checkout@v4
 
@@ -29,7 +27,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          # Se seu Dockerfile estiver em ./docker/Dockerfile, troque a linha abaixo:
           file: ./Dockerfile
           push: true
           tags: |
