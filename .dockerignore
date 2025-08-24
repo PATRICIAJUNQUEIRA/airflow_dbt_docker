@@ -1,0 +1,6 @@
+.venv/
+venv/
+__pycache__/
+logs/
+*.sarif
+gitleaks_*.json
