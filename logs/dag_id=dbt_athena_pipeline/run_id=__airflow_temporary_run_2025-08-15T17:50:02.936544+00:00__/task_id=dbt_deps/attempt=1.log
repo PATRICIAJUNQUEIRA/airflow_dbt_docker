@@ -1,0 +1,44 @@
+[2025-08-15T17:50:04.259+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-15T17:50:04.294+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.dbt_deps __airflow_temporary_run_2025-08-15T17:50:02.936544+00:00__ [queued]>
+[2025-08-15T17:50:04.303+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.dbt_deps __airflow_temporary_run_2025-08-15T17:50:02.936544+00:00__ [queued]>
+[2025-08-15T17:50:04.304+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-15T17:50:04.321+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_deps> on 2025-08-15 00:00:00+00:00
+[2025-08-15T17:50:04.327+0000] {standard_task_runner.py:64} INFO - Started process 48 to run task
+[2025-08-15T17:50:04.333+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'dbt_deps', '__***_temporary_run_2025-08-15T17:50:02.936544+00:00__', '--job-id', '50', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmplj_po1h6']
+[2025-08-15T17:50:04.336+0000] {standard_task_runner.py:91} INFO - Job 50: Subtask dbt_deps
+[2025-08-15T17:50:04.423+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.dbt_deps __airflow_temporary_run_2025-08-15T17:50:02.936544+00:00__ [running]> on host e1203d83167e
+[2025-08-15T17:50:04.560+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='dbt_deps' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='__***_temporary_run_2025-08-15T17:50:02.936544+00:00__'
+[2025-08-15T17:50:04.561+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-15T17:50:04.595+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-15T17:50:04.596+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'set -euo pipefail && cd /opt/***/dbt && /home/***/.local/bin/dbt --no-use-colors deps --profiles-dir /opt/***/.dbt']
+[2025-08-15T17:50:04.612+0000] {subprocess.py:86} INFO - Output:
+[2025-08-15T17:50:07.650+0000] {subprocess.py:93} INFO - 17:50:07  Running with dbt=1.9.2
+[2025-08-15T17:50:08.283+0000] {subprocess.py:93} INFO - 17:50:08  Installing dbt-labs/dbt_external_tables
+[2025-08-15T17:50:08.784+0000] {subprocess.py:93} INFO - 17:50:08  Installed from version 0.11.1
+[2025-08-15T17:50:08.784+0000] {subprocess.py:93} INFO - 17:50:08  Up to date!
+[2025-08-15T17:50:09.772+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-08-15T17:50:09.773+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-15T17:50:09.791+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 486, in _execute_task
+    task_instance.xcom_push(key=XCOM_RETURN_KEY, value=xcom_value, session=session)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 76, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 3197, in xcom_push
+    XCom.set(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 76, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/xcom.py", line 223, in set
+    raise ValueError(f"DAG run not found on DAG {dag_id!r} with ID {run_id!r}")
+ValueError: DAG run not found on DAG 'dbt_athena_pipeline' with ID '__***_temporary_run_2025-08-15T17:50:02.936544+00:00__'
+[2025-08-15T17:50:09.808+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=dbt_athena_pipeline, task_id=dbt_deps, run_id=__***_temporary_run_2025-08-15T17:50:02.936544+00:00__, execution_date=20250815T000000, start_date=20250815T175004, end_date=20250815T175009
+[2025-08-15T17:50:09.830+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 50 for task dbt_deps ((psycopg2.errors.ForeignKeyViolation) insert or update on table "task_fail" violates foreign key constraint "task_fail_ti_fkey"
+DETAIL:  Key (dag_id, task_id, run_id, map_index)=(dbt_athena_pipeline, dbt_deps, __airflow_temporary_run_2025-08-15T17:50:02.936544+00:00__, -1) is not present in table "task_instance".
+
+[SQL: INSERT INTO task_fail (task_id, dag_id, run_id, map_index, start_date, end_date, duration) VALUES (%(task_id)s, %(dag_id)s, %(run_id)s, %(map_index)s, %(start_date)s, %(end_date)s, %(duration)s) RETURNING task_fail.id]
+[parameters: {'task_id': 'dbt_deps', 'dag_id': 'dbt_athena_pipeline', 'run_id': '__airflow_temporary_run_2025-08-15T17:50:02.936544+00:00__', 'map_index': -1, 'start_date': datetime.datetime(2025, 8, 15, 17, 50, 4, 294992, tzinfo=Timezone('UTC')), 'end_date': datetime.datetime(2025, 8, 15, 17, 50, 9, 807332, tzinfo=Timezone('UTC')), 'duration': 5}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj); 48)
+[2025-08-15T17:50:09.875+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2025-08-15T17:50:09.893+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

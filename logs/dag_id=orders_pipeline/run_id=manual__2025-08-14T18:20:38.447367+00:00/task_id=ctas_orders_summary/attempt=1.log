@@ -1,0 +1,57 @@
+[2025-08-14T18:21:19.494+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-14T18:21:19.534+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: orders_pipeline.ctas_orders_summary manual__2025-08-14T18:20:38.447367+00:00 [queued]>
+[2025-08-14T18:21:19.550+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: orders_pipeline.ctas_orders_summary manual__2025-08-14T18:20:38.447367+00:00 [queued]>
+[2025-08-14T18:21:19.551+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-14T18:21:19.585+0000] {taskinstance.py:2330} INFO - Executing <Task(AthenaOperator): ctas_orders_summary> on 2025-08-14 18:20:38.447367+00:00
+[2025-08-14T18:21:19.601+0000] {standard_task_runner.py:64} INFO - Started process 177 to run task
+[2025-08-14T18:21:19.612+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'orders_pipeline', 'ctas_orders_summary', 'manual__2025-08-14T18:20:38.447367+00:00', '--job-id', '21', '--raw', '--subdir', 'DAGS_FOLDER/orders_pipeline.py', '--cfg-path', '/tmp/tmp0b58xyn7']
+[2025-08-14T18:21:19.615+0000] {standard_task_runner.py:91} INFO - Job 21: Subtask ctas_orders_summary
+[2025-08-14T18:21:19.755+0000] {task_command.py:426} INFO - Running <TaskInstance: orders_pipeline.ctas_orders_summary manual__2025-08-14T18:20:38.447367+00:00 [running]> on host 25a9e79e188f
+[2025-08-14T18:21:19.987+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-eng' AIRFLOW_CTX_DAG_ID='orders_pipeline' AIRFLOW_CTX_TASK_ID='ctas_orders_summary' AIRFLOW_CTX_EXECUTION_DATE='2025-08-14T18:20:38.447367+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-14T18:20:38.447367+00:00'
+[2025-08-14T18:21:19.989+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-14T18:21:20.030+0000] {athena.py:132} INFO - Running Query with params:
+	QueryString: 
+		
+		CREATE TABLE analytics.orders_summary
+		WITH (
+		  format            = 'PARQUET',
+		  parquet_compression = 'SNAPPY',
+		  external_location = 's3://pt-data-lab/processed-data/orders_summary/'
+		) AS
+		SELECT
+		  customer,
+		  CAST(order_date AS DATE) AS order_date,
+		  COUNT(*)                 AS orders,
+		  SUM(amount)              AS total_amount
+		FROM analytics.raw_orders
+		GROUP BY customer, CAST(order_date AS DATE);
+	QueryExecutionContext: {'Database': 'analytics', 'Catalog': 'AwsDataCatalog'}
+	ResultConfiguration: {'OutputLocation': 's3://pt-data-lab/athena-staging/'}
+	WorkGroup: primary
+[2025-08-14T18:21:20.068+0000] {base_aws.py:587} WARNING - Unable to find AWS Connection ID 'aws_default', switching to empty.
+[2025-08-14T18:21:20.070+0000] {base_aws.py:164} INFO - No connection ID provided. Fallback on boto3 credential strategy (region_name=None). See: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
+[2025-08-14T18:21:20.608+0000] {credentials.py:1147} INFO - Found credentials in environment variables.
+[2025-08-14T18:21:21.920+0000] {athena.py:135} INFO - Query execution id: 704e450a-1620-4ba5-9952-d865ec20fd1a
+[2025-08-14T18:21:22.142+0000] {waiter_with_logging.py:78} INFO - Query execution id: 704e450a-1620-4ba5-9952-d865ec20fd1a, Query is still in non-terminal state: QUEUED
+[2025-08-14T18:21:32.310+0000] {waiter_with_logging.py:75} ERROR - Error while waiting for query 704e450a-1620-4ba5-9952-d865ec20fd1a to complete: FAILED
+[2025-08-14T18:21:32.310+0000] {athena.py:297} WARNING - Error while waiting for query 704e450a-1620-4ba5-9952-d865ec20fd1a to complete: Waiter query_complete failed: Waiter encountered a terminal failure state: For expression "QueryExecution.Status.State" we matched expected path: "FAILED"
+[2025-08-14T18:21:32.695+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-14T18:21:32.714+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/amazon/aws/operators/athena.py", line 168, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Final state of Athena job is FAILED, query_execution_id is 704e450a-1620-4ba5-9952-d865ec20fd1a. Error: HIVE_PATH_ALREADY_EXISTS: Target directory for table 'analytics.orders_summary' already exists: s3://pt-data-lab/processed-data/orders_summary/. You may need to manually clean the data at location 's3://pt-data-lab/athena-staging/tables/704e450a-1620-4ba5-9952-d865ec20fd1a' before retrying. Athena will not delete data in your account.
+[2025-08-14T18:21:32.719+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=orders_pipeline, task_id=ctas_orders_summary, run_id=manual__2025-08-14T18:20:38.447367+00:00, execution_date=20250814T182038, start_date=20250814T182119, end_date=20250814T182132
+[2025-08-14T18:21:32.739+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 21 for task ctas_orders_summary (Final state of Athena job is FAILED, query_execution_id is 704e450a-1620-4ba5-9952-d865ec20fd1a. Error: HIVE_PATH_ALREADY_EXISTS: Target directory for table 'analytics.orders_summary' already exists: s3://pt-data-lab/processed-data/orders_summary/. You may need to manually clean the data at location 's3://pt-data-lab/athena-staging/tables/704e450a-1620-4ba5-9952-d865ec20fd1a' before retrying. Athena will not delete data in your account.; 177)
+[2025-08-14T18:21:32.784+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2025-08-14T18:21:32.818+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-14T18:21:32.824+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

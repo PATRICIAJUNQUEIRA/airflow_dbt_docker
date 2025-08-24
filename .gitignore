@@ -1,0 +1,29 @@
+# Secrets
+.env
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Airflow/DBT runtime
+logs/
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Local data
+data/
+*.csv
+*.parquet
+
+# Docker volumes
+pgdata/
+grafana-storage/
+venv/
+.venv/
+__pycache__/
+*.sarif
+gitleaks_*.json

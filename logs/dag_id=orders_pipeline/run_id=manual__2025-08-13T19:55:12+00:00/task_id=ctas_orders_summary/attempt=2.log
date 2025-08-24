@@ -1,0 +1,47 @@
+[2025-08-13T20:43:18.892+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-13T20:43:18.913+0000] {taskinstance.py:2066} INFO - Dependencies not met for <TaskInstance: orders_pipeline.ctas_orders_summary manual__2025-08-13T19:55:12+00:00 [failed]>, dependency 'Trigger Rule' FAILED: Task's trigger rule 'all_success' requires all upstream tasks to have succeeded, but found 1 non-success(es). upstream_states=_UpstreamTIStates(success=0, skipped=0, failed=0, upstream_failed=0, removed=0, done=0, success_setup=0, skipped_setup=0), upstream_task_ids={'clear_output_prefix'}
+[2025-08-13T20:43:18.913+0000] {taskinstance.py:2066} INFO - Dependencies not met for <TaskInstance: orders_pipeline.ctas_orders_summary manual__2025-08-13T19:55:12+00:00 [failed]>, dependency 'Task Instance State' FAILED: Task is in the 'failed' state.
+[2025-08-13T20:43:18.916+0000] {local_task_job_runner.py:163} INFO - Task is not able to be run
+[2025-08-13T20:47:14.884+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-13T20:47:14.924+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: orders_pipeline.ctas_orders_summary manual__2025-08-13T19:55:12+00:00 [queued]>
+[2025-08-13T20:47:14.937+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: orders_pipeline.ctas_orders_summary manual__2025-08-13T19:55:12+00:00 [queued]>
+[2025-08-13T20:47:14.938+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2025-08-13T20:47:14.957+0000] {taskinstance.py:2330} INFO - Executing <Task(AthenaOperator): ctas_orders_summary> on 2025-08-13 19:55:12+00:00
+[2025-08-13T20:47:14.967+0000] {standard_task_runner.py:64} INFO - Started process 118 to run task
+[2025-08-13T20:47:14.977+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'orders_pipeline', 'ctas_orders_summary', 'manual__2025-08-13T19:55:12+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/orders_pipeline.py', '--cfg-path', '/tmp/tmp7lortdsy']
+[2025-08-13T20:47:14.979+0000] {standard_task_runner.py:91} INFO - Job 20: Subtask ctas_orders_summary
+[2025-08-13T20:47:15.086+0000] {task_command.py:426} INFO - Running <TaskInstance: orders_pipeline.ctas_orders_summary manual__2025-08-13T19:55:12+00:00 [running]> on host fb6a3d62f72f
+[2025-08-13T20:47:15.279+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-eng' AIRFLOW_CTX_DAG_ID='orders_pipeline' AIRFLOW_CTX_TASK_ID='ctas_orders_summary' AIRFLOW_CTX_EXECUTION_DATE='2025-08-13T19:55:12+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-13T19:55:12+00:00'
+[2025-08-13T20:47:15.280+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-13T20:47:15.296+0000] {athena.py:132} INFO - Running Query with params:
+	QueryString: 
+		
+		CREATE TABLE analytics.orders_summary
+		WITH (
+		  format='PARQUET',
+		  external_location='s3://pt-data-lab/processed-data/orders_summary/'
+		) AS
+		SELECT
+		  customer,
+		  CAST(order_date AS DATE) AS order_date,
+		  COUNT(*)    AS orders,
+		  SUM(amount) AS total_amount
+		FROM analytics.raw_orders
+		GROUP BY customer, CAST(order_date AS DATE);
+	QueryExecutionContext: {'Database': 'analytics', 'Catalog': 'AwsDataCatalog'}
+	ResultConfiguration: {'OutputLocation': 's3://pt-data-lab/athena-staging/'}
+	WorkGroup: primary
+[2025-08-13T20:47:15.315+0000] {base_aws.py:587} WARNING - Unable to find AWS Connection ID 'aws_default', switching to empty.
+[2025-08-13T20:47:15.316+0000] {base_aws.py:164} INFO - No connection ID provided. Fallback on boto3 credential strategy (region_name=None). See: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
+[2025-08-13T20:47:15.663+0000] {credentials.py:1147} INFO - Found credentials in environment variables.
+[2025-08-13T20:47:16.759+0000] {athena.py:135} INFO - Query execution id: 2a8f66a7-3a80-43fc-99e8-7d7e425b1538
+[2025-08-13T20:47:16.993+0000] {waiter_with_logging.py:78} INFO - Query execution id: 2a8f66a7-3a80-43fc-99e8-7d7e425b1538, Query is still in non-terminal state: RUNNING
+[2025-08-13T20:47:21.382+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-13T20:47:21.406+0000] {taskinstance.py:2066} INFO - Dependencies not met for <TaskInstance: orders_pipeline.ctas_orders_summary manual__2025-08-13T19:55:12+00:00 [running]>, dependency 'Task Instance State' FAILED: Task is in the 'running' state.
+[2025-08-13T20:47:21.406+0000] {taskinstance.py:2066} INFO - Dependencies not met for <TaskInstance: orders_pipeline.ctas_orders_summary manual__2025-08-13T19:55:12+00:00 [running]>, dependency 'Task Instance Not Running' FAILED: Task is in the running state
+[2025-08-13T20:47:21.409+0000] {local_task_job_runner.py:163} INFO - Task is not able to be run
+[2025-08-13T20:47:27.435+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-13T20:47:27.476+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=orders_pipeline, task_id=ctas_orders_summary, run_id=manual__2025-08-13T19:55:12+00:00, execution_date=20250813T195512, start_date=20250813T204714, end_date=20250813T204727
+[2025-08-13T20:47:27.529+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-13T20:47:27.553+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-13T20:47:27.556+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

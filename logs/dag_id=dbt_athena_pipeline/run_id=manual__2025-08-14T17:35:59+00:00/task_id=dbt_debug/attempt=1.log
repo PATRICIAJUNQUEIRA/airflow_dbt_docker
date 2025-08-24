@@ -1,0 +1,59 @@
+[2025-08-14T17:36:09.716+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-14T17:36:09.772+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.dbt_debug manual__2025-08-14T17:35:59+00:00 [queued]>
+[2025-08-14T17:36:09.789+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.dbt_debug manual__2025-08-14T17:35:59+00:00 [queued]>
+[2025-08-14T17:36:09.790+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-14T17:36:09.823+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_debug> on 2025-08-14 17:35:59+00:00
+[2025-08-14T17:36:09.833+0000] {standard_task_runner.py:64} INFO - Started process 66 to run task
+[2025-08-14T17:36:09.841+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'dbt_debug', 'manual__2025-08-14T17:35:59+00:00', '--job-id', '27', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmpcacxpxa5']
+[2025-08-14T17:36:09.843+0000] {standard_task_runner.py:91} INFO - Job 27: Subtask dbt_debug
+[2025-08-14T17:36:09.965+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.dbt_debug manual__2025-08-14T17:35:59+00:00 [running]> on host 27e97aa38404
+[2025-08-14T17:36:10.171+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-eng' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='dbt_debug' AIRFLOW_CTX_EXECUTION_DATE='2025-08-14T17:35:59+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-14T17:35:59+00:00'
+[2025-08-14T17:36:10.173+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-14T17:36:10.202+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-14T17:36:10.205+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n            set -euo pipefail\n            cd /opt/***/dbt\n            dbt debug --profiles-dir /opt/***/dbt/profiles\n        ']
+[2025-08-14T17:36:10.227+0000] {subprocess.py:86} INFO - Output:
+[2025-08-14T17:36:14.466+0000] {subprocess.py:93} INFO - [0m17:36:14  Running with dbt=1.7.19
+[2025-08-14T17:36:14.468+0000] {subprocess.py:93} INFO - [0m17:36:14  dbt version: 1.7.19
+[2025-08-14T17:36:14.468+0000] {subprocess.py:93} INFO - [0m17:36:14  python version: 3.11.9
+[2025-08-14T17:36:14.469+0000] {subprocess.py:93} INFO - [0m17:36:14  python path: /home/***/.local/bin/python
+[2025-08-14T17:36:14.470+0000] {subprocess.py:93} INFO - [0m17:36:14  os info: Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[2025-08-14T17:36:14.979+0000] {subprocess.py:93} INFO - [0m17:36:14  Using profiles dir at /opt/***/dbt/profiles
+[2025-08-14T17:36:14.980+0000] {subprocess.py:93} INFO - [0m17:36:14  Using profiles.yml file at /opt/***/dbt/profiles/profiles.yml
+[2025-08-14T17:36:14.981+0000] {subprocess.py:93} INFO - [0m17:36:14  Using dbt_project.yml file at /opt/***/dbt/dbt_project.yml
+[2025-08-14T17:36:14.982+0000] {subprocess.py:93} INFO - [0m17:36:14  adapter type: athena
+[2025-08-14T17:36:14.984+0000] {subprocess.py:93} INFO - [0m17:36:14  adapter version: 1.7.2
+[2025-08-14T17:36:15.135+0000] {subprocess.py:93} INFO - [0m17:36:15  Configuration:
+[2025-08-14T17:36:15.136+0000] {subprocess.py:93} INFO - [0m17:36:15    profiles.yml file [[32mOK found and valid[0m]
+[2025-08-14T17:36:15.137+0000] {subprocess.py:93} INFO - [0m17:36:15    dbt_project.yml file [[32mOK found and valid[0m]
+[2025-08-14T17:36:15.138+0000] {subprocess.py:93} INFO - [0m17:36:15  Required dependencies:
+[2025-08-14T17:36:15.147+0000] {subprocess.py:93} INFO - [0m17:36:15   - git [[32mOK found[0m]
+[2025-08-14T17:36:15.147+0000] {subprocess.py:93} INFO - 
+[2025-08-14T17:36:15.148+0000] {subprocess.py:93} INFO - [0m17:36:15  Connection:
+[2025-08-14T17:36:15.150+0000] {subprocess.py:93} INFO - [0m17:36:15    s3_staging_dir: s3://pt-data-lab/athena-staging/
+[2025-08-14T17:36:15.151+0000] {subprocess.py:93} INFO - [0m17:36:15    work_group: primary
+[2025-08-14T17:36:15.153+0000] {subprocess.py:93} INFO - [0m17:36:15    region_name: us-east-2
+[2025-08-14T17:36:15.154+0000] {subprocess.py:93} INFO - [0m17:36:15    database: awsdatacatalog
+[2025-08-14T17:36:15.155+0000] {subprocess.py:93} INFO - [0m17:36:15    schema: analytics
+[2025-08-14T17:36:15.155+0000] {subprocess.py:93} INFO - [0m17:36:15    poll_interval: 1.0
+[2025-08-14T17:36:15.156+0000] {subprocess.py:93} INFO - [0m17:36:15    aws_profile_name: None
+[2025-08-14T17:36:15.157+0000] {subprocess.py:93} INFO - [0m17:36:15    aws_access_key_id: None
+[2025-08-14T17:36:15.157+0000] {subprocess.py:93} INFO - [0m17:36:15    aws_secret_access_key: None
+[2025-08-14T17:36:15.158+0000] {subprocess.py:93} INFO - [0m17:36:15    aws_session_token: None
+[2025-08-14T17:36:15.159+0000] {subprocess.py:93} INFO - [0m17:36:15    endpoint_url: None
+[2025-08-14T17:36:15.160+0000] {subprocess.py:93} INFO - [0m17:36:15    s3_data_dir: s3://pt-data-lab/processed-data/
+[2025-08-14T17:36:15.162+0000] {subprocess.py:93} INFO - [0m17:36:15    s3_data_naming: schema_table
+[2025-08-14T17:36:15.163+0000] {subprocess.py:93} INFO - [0m17:36:15    s3_tmp_table_dir: None
+[2025-08-14T17:36:15.164+0000] {subprocess.py:93} INFO - [0m17:36:15    debug_query_state: False
+[2025-08-14T17:36:15.167+0000] {subprocess.py:93} INFO - [0m17:36:15    seed_s3_upload_args: None
+[2025-08-14T17:36:15.168+0000] {subprocess.py:93} INFO - [0m17:36:15    lf_tags_database: None
+[2025-08-14T17:36:15.171+0000] {subprocess.py:93} INFO - [0m17:36:15    spark_work_group: None
+[2025-08-14T17:36:15.172+0000] {subprocess.py:93} INFO - [0m17:36:15  Registered adapter: athena=1.7.2
+[2025-08-14T17:36:17.967+0000] {subprocess.py:93} INFO - [0m17:36:17    Connection test: [[32mOK connection ok[0m]
+[2025-08-14T17:36:17.967+0000] {subprocess.py:93} INFO - 
+[2025-08-14T17:36:17.967+0000] {subprocess.py:93} INFO - [0m17:36:17  [32mAll checks passed![0m
+[2025-08-14T17:36:19.610+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-08-14T17:36:19.612+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-14T17:36:19.678+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=dbt_athena_pipeline, task_id=dbt_debug, run_id=manual__2025-08-14T17:35:59+00:00, execution_date=20250814T173559, start_date=20250814T173609, end_date=20250814T173619
+[2025-08-14T17:36:19.727+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-14T17:36:19.810+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-08-14T17:36:19.819+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

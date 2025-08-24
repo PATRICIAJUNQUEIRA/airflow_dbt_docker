@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: orders_clean
+    description: Tabela limpa de pedidos a partir de raw.orders_raw
+    columns:
+      - name: order_id
+        description: ID do pedido (string)
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: ID do cliente
+        tests:
+          - not_null
+      - name: amount
+        description: Valor do pedido
+        tests:
+          - not_null

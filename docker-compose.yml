@@ -1,0 +1,201 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+
+  # Converte métricas StatsD do Airflow para Prometheus
+  statsd-exporter:
+    image: prom/statsd-exporter:v0.26.0
+    command: "--statsd.listen-udp=:9125 --web.listen-address=:9102"
+    ports:
+      - "9102:9102"        # /metrics para Prometheus
+      - "9125:9125/udp"    # porta UDP para StatsD
+
+  # Prometheus raspando o statsd-exporter
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --web.listen-address=:9090
+    ports:
+      - "9090:9090"
+    depends_on:
+      - statsd-exporter
+
+  # Grafana com provisioning
+  grafana:
+    image: grafana/grafana:11.0.0
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-ChangeMe#2025}
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus
+
+  # =============== Airflow =================
+  airflow-webserver:
+    build: ./docker/airflow
+    environment:
+      AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+      AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW__CORE__FERNET_KEY}
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: ${AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION}
+      AIRFLOW__CORE__LOAD_EXAMPLES: ${AIRFLOW__CORE__LOAD_EXAMPLES}
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      AIRFLOW__CELERY__BROKER_URL: redis://redis:6379/0
+      # Métricas -> statsd-exporter
+      AIRFLOW__METRICS__STATSD_ON: "true"
+      AIRFLOW__METRICS__STATSD_HOST: statsd-exporter
+      AIRFLOW__METRICS__STATSD_PORT: 9125
+      AIRFLOW__METRICS__STATSD_PREFIX: airflow
+      AIRFLOW__METRICS__METRICS_ALLOW_LIST: ".*"
+      AIRFLOW__METRICS__METRICS_USE_PATTERN_MATCH: "True"
+      AIRFLOW__METRICS__STATSD_SAMPLE_RATE: "1.0"
+      # dbt/AWS
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      DBT_PROFILES_DIR: /opt/airflow/.dbt
+      ATHENA_DB: ${ATHENA_DB}
+      S3_BUCKET: ${S3_BUCKET}
+      DBT_THREADS: ${DBT_THREADS:-4}
+      AIRFLOW__WEBSERVER__WEB_SERVER_HOST: 0.0.0.0
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./dbt:/opt/airflow/dbt
+      - ./dbt/profiles:/opt/airflow/.dbt
+      - ./logs:/opt/airflow/logs
+      - ./data:/opt/airflow/data:ro
+    ports:
+      - "8080:8080"
+    command: >
+      bash -lc "rm -f /opt/airflow/airflow-webserver.pid; exec airflow webserver -H 0.0.0.0 -p 8080"
+    depends_on:
+      - postgres
+      - redis
+      - statsd-exporter
+
+  airflow-scheduler:
+    build: ./docker/airflow
+    environment:
+      AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      AIRFLOW__CELERY__BROKER_URL: redis://redis:6379/0
+      # Métricas
+      AIRFLOW__METRICS__STATSD_ON: "true"
+      AIRFLOW__METRICS__STATSD_HOST: statsd-exporter
+      AIRFLOW__METRICS__STATSD_PORT: 9125
+      AIRFLOW__METRICS__STATSD_PREFIX: airflow
+      AIRFLOW__METRICS__METRICS_ALLOW_LIST: ".*"
+      AIRFLOW__METRICS__METRICS_USE_PATTERN_MATCH: "True"
+      AIRFLOW__METRICS__STATSD_SAMPLE_RATE: "1.0"
+      # dbt/AWS
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      DBT_PROFILES_DIR: /opt/airflow/.dbt
+      ATHENA_DB: ${ATHENA_DB}
+      S3_BUCKET: ${S3_BUCKET}
+      DBT_THREADS: ${DBT_THREADS:-4}
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./dbt:/opt/airflow/dbt
+      - ./dbt/profiles:/opt/airflow/.dbt
+      - ./logs:/opt/airflow/logs
+    command: ["airflow", "scheduler"]
+    depends_on:
+      - postgres
+      - redis
+      - statsd-exporter
+
+  airflow-worker:
+    build: ./docker/airflow
+    environment:
+      AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      AIRFLOW__CELERY__BROKER_URL: redis://redis:6379/0
+      # Métricas
+      AIRFLOW__METRICS__STATSD_ON: "true"
+      AIRFLOW__METRICS__STATSD_HOST: statsd-exporter
+      AIRFLOW__METRICS__STATSD_PORT: 9125
+      AIRFLOW__METRICS__STATSD_PREFIX: airflow
+      AIRFLOW__METRICS__METRICS_ALLOW_LIST: ".*"
+      AIRFLOW__METRICS__METRICS_USE_PATTERN_MATCH: "True"
+      AIRFLOW__METRICS__STATSD_SAMPLE_RATE: "1.0"
+      # dbt/AWS
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      DBT_PROFILES_DIR: /opt/airflow/.dbt
+      ATHENA_DB: ${ATHENA_DB}
+      S3_BUCKET: ${S3_BUCKET}
+      DBT_THREADS: ${DBT_THREADS:-4}
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./dbt:/opt/airflow/dbt
+      - ./dbt/profiles:/opt/airflow/.dbt
+      - ./logs:/opt/airflow/logs
+      - ./data:/opt/airflow/data:ro
+    command: ["airflow", "celery", "worker"]
+    depends_on:
+      - postgres
+      - redis
+      - statsd-exporter
+
+  airflow-dag-processor:
+    build: ./docker/airflow
+    environment:
+      AIRFLOW__METRICS__STATSD_ON: "true"
+      AIRFLOW__METRICS__STATSD_HOST: statsd-exporter
+      AIRFLOW__METRICS__STATSD_PORT: 9125
+      AIRFLOW__METRICS__STATSD_PREFIX: airflow
+      AIRFLOW__METRICS__METRICS_ALLOW_LIST: ".*"
+      AIRFLOW__METRICS__METRICS_USE_PATTERN_MATCH: "True"
+      AIRFLOW__METRICS__STATSD_SAMPLE_RATE: "1.0"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./dbt:/opt/airflow/dbt
+      - ./dbt/profiles:/opt/airflow/.dbt
+    command: ["airflow", "dag-processor"]
+    depends_on:
+      - postgres
+      - redis
+      - statsd-exporter
+
+  airflow-init:
+    build: ./docker/airflow
+    entrypoint: /bin/bash
+    command: >
+      -lc "
+      airflow db upgrade &&
+      airflow users create --role Admin --username admin --password admin
+        --email admin@example.com --firstname Air --lastname Flow || true
+      "
+    environment:
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata:
+  grafana-storage:

@@ -1,0 +1,12 @@
+default:
+  target: dev
+  outputs:
+    dev:
+      type: athena
+      region_name: us-east-2
+      s3_staging_dir: s3://pt-data-lab/athena-staging/
+      s3_data_dir: s3://pt-data-lab/processed-data/
+      database: AwsDataCatalog      # catálogo do Glue/Athena
+      schema: analytics             # <- nome do DB (obrigatório)
+      work_group: primary
+      threads: 4

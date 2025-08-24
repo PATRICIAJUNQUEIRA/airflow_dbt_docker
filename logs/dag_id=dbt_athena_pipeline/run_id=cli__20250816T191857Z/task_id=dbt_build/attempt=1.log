@@ -1,0 +1,52 @@
+[2025-08-16T19:19:28.934+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-16T19:19:28.971+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.dbt_build cli__20250816T191857Z [queued]>
+[2025-08-16T19:19:28.981+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.dbt_build cli__20250816T191857Z [queued]>
+[2025-08-16T19:19:28.982+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-08-16T19:19:28.999+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_build> on 2025-08-16 19:19:07+00:00
+[2025-08-16T19:19:29.006+0000] {standard_task_runner.py:64} INFO - Started process 205 to run task
+[2025-08-16T19:19:29.010+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'dbt_build', 'cli__20250816T191857Z', '--job-id', '55', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmpq7hxwrrx']
+[2025-08-16T19:19:29.012+0000] {standard_task_runner.py:91} INFO - Job 55: Subtask dbt_build
+[2025-08-16T19:19:29.087+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.dbt_build cli__20250816T191857Z [running]> on host 392a94efd1c1
+[2025-08-16T19:19:29.241+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='dbt_build' AIRFLOW_CTX_EXECUTION_DATE='2025-08-16T19:19:07+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='cli__20250816T191857Z'
+[2025-08-16T19:19:29.242+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-16T19:19:29.255+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-16T19:19:29.256+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'set -Eeuo pipefail -x; cd /opt/***/dbt; echo \'which dbt=\'$(command -v dbt || true); /home/***/.local/bin/dbt --version || true; echo "ENV S3_BUCKET=$S3_BUCKET ATHENA_DB=$ATHENA_DB AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION"; /home/***/.local/bin/dbt build --no-use-colors --profiles-dir /opt/***/.dbt --target dev -v']
+[2025-08-16T19:19:29.269+0000] {subprocess.py:86} INFO - Output:
+[2025-08-16T19:19:29.270+0000] {subprocess.py:93} INFO - + cd /opt/***/dbt
+[2025-08-16T19:19:29.271+0000] {subprocess.py:93} INFO - ++ command -v dbt
+[2025-08-16T19:19:29.271+0000] {subprocess.py:93} INFO - + echo 'which dbt=/home/***/.local/bin/dbt'
+[2025-08-16T19:19:29.271+0000] {subprocess.py:93} INFO - which dbt=/home/***/.local/bin/dbt
+[2025-08-16T19:19:29.272+0000] {subprocess.py:93} INFO - + /home/***/.local/bin/dbt --version
+[2025-08-16T19:19:33.269+0000] {subprocess.py:93} INFO - Core:
+[2025-08-16T19:19:33.269+0000] {subprocess.py:93} INFO -   - installed: 1.9.2
+[2025-08-16T19:19:33.269+0000] {subprocess.py:93} INFO -   - latest:    1.10.9 - Update available!
+[2025-08-16T19:19:33.269+0000] {subprocess.py:93} INFO - 
+[2025-08-16T19:19:33.270+0000] {subprocess.py:93} INFO -   Your version of dbt-core is out of date!
+[2025-08-16T19:19:33.270+0000] {subprocess.py:93} INFO -   You can find instructions for upgrading here:
+[2025-08-16T19:19:33.270+0000] {subprocess.py:93} INFO -   https://docs.getdbt.com/docs/installation
+[2025-08-16T19:19:33.270+0000] {subprocess.py:93} INFO - 
+[2025-08-16T19:19:33.270+0000] {subprocess.py:93} INFO - Plugins:
+[2025-08-16T19:19:33.270+0000] {subprocess.py:93} INFO -   - athena: 1.9.4 - Up to date!
+[2025-08-16T19:19:33.271+0000] {subprocess.py:93} INFO - 
+[2025-08-16T19:19:33.271+0000] {subprocess.py:93} INFO - 
+[2025-08-16T19:19:33.713+0000] {subprocess.py:93} INFO - + echo 'ENV S3_BUCKET=pt-data-lab ATHENA_DB=analytics AWS_DEFAULT_REGION=us-east-2'
+[2025-08-16T19:19:33.714+0000] {subprocess.py:93} INFO - ENV S3_BUCKET=pt-data-lab ATHENA_DB=analytics AWS_DEFAULT_REGION=us-east-2
+[2025-08-16T19:19:33.715+0000] {subprocess.py:93} INFO - + /home/***/.local/bin/dbt build --no-use-colors --profiles-dir /opt/***/.dbt --target dev -v
+[2025-08-16T19:19:37.112+0000] {subprocess.py:93} INFO - Core:
+[2025-08-16T19:19:37.113+0000] {subprocess.py:93} INFO -   - installed: 1.9.2
+[2025-08-16T19:19:37.113+0000] {subprocess.py:93} INFO -   - latest:    1.10.9 - Update available!
+[2025-08-16T19:19:37.113+0000] {subprocess.py:93} INFO - 
+[2025-08-16T19:19:37.113+0000] {subprocess.py:93} INFO -   Your version of dbt-core is out of date!
+[2025-08-16T19:19:37.114+0000] {subprocess.py:93} INFO -   You can find instructions for upgrading here:
+[2025-08-16T19:19:37.114+0000] {subprocess.py:93} INFO -   https://docs.getdbt.com/docs/installation
+[2025-08-16T19:19:37.114+0000] {subprocess.py:93} INFO - 
+[2025-08-16T19:19:37.115+0000] {subprocess.py:93} INFO - Plugins:
+[2025-08-16T19:19:37.115+0000] {subprocess.py:93} INFO -   - athena: 1.9.4 - Up to date!
+[2025-08-16T19:19:37.115+0000] {subprocess.py:93} INFO - 
+[2025-08-16T19:19:37.116+0000] {subprocess.py:93} INFO - 
+[2025-08-16T19:19:37.493+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-08-16T19:19:37.494+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-16T19:19:37.515+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=dbt_athena_pipeline, task_id=dbt_build, run_id=cli__20250816T191857Z, execution_date=20250816T191907, start_date=20250816T191928, end_date=20250816T191937
+[2025-08-16T19:19:37.560+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-16T19:19:37.586+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-16T19:19:37.591+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,27 @@
+# dbt/models/sources.yml
+version: 2
+
+sources:
+  - name: raw
+    database: "{{ target.database }}"   # -> analytics
+    schema:   "{{ target.schema }}"     # -> analytics
+    description: "Camada raw (tabelas externas no Athena)"
+    tables:
+      - name: orders_raw
+        description: "Pedidos brutos em CSV no S3"
+        external:
+          location: "s3://{{ env_var('S3_BUCKET') }}/raw-data/orders/"
+          file_format: csv
+          options:
+            field_delimiter: ","
+            skip_header_line_count: 1
+            quote_char: '"'              # remova esta linha se seu CSV não usa aspas
+        columns:
+          - name: order_id
+            data_type: varchar
+          - name: order_date
+            data_type: date
+          - name: customer
+            data_type: varchar
+          - name: amount
+            data_type: double

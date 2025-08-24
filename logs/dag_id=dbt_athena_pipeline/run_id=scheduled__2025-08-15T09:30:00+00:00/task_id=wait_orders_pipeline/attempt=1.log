@@ -1,0 +1,252 @@
+[2025-08-16T18:24:04.510+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-16T18:24:04.575+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:24:04.596+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:24:04.597+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-08-16T18:24:04.635+0000] {taskinstance.py:2330} INFO - Executing <Task(ExternalTaskSensor): wait_orders_pipeline> on 2025-08-15 09:30:00+00:00
+[2025-08-16T18:24:04.649+0000] {standard_task_runner.py:64} INFO - Started process 55 to run task
+[2025-08-16T18:24:04.660+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'wait_orders_pipeline', 'scheduled__2025-08-15T09:30:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmp88w1o1ow']
+[2025-08-16T18:24:04.664+0000] {standard_task_runner.py:91} INFO - Job 5: Subtask wait_orders_pipeline
+[2025-08-16T18:24:04.841+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [running]> on host 392a94efd1c1
+[2025-08-16T18:24:05.153+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='wait_orders_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T09:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-15T09:30:00+00:00'
+[2025-08-16T18:24:05.157+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-16T18:24:05.207+0000] {baseoperator.py:400} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2025-08-16T18:24:05.246+0000] {external_task.py:274} INFO - Poking for DAG 'orders_pipeline' on 2025-08-15T09:30:00+00:00 ... 
+[2025-08-16T18:24:05.250+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.11/site-packages/***/utils/session.py:79: DeprecationWarning: This method is deprecated and will be removed in future.
+  return func(*args, session=session, **kwargs)
+
+[2025-08-16T18:24:05.295+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-16T18:24:05.358+0000] {taskinstance.py:2865} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2025-08-16T18:24:05.397+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-16T18:24:05.474+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-16T18:24:05.479+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-16T18:25:07.273+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-16T18:25:07.343+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:25:07.368+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:25:07.369+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-08-16T18:25:07.399+0000] {taskinstance.py:2330} INFO - Executing <Task(ExternalTaskSensor): wait_orders_pipeline> on 2025-08-15 09:30:00+00:00
+[2025-08-16T18:25:07.411+0000] {standard_task_runner.py:64} INFO - Started process 70 to run task
+[2025-08-16T18:25:07.420+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'wait_orders_pipeline', 'scheduled__2025-08-15T09:30:00+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmpl108hb82']
+[2025-08-16T18:25:07.423+0000] {standard_task_runner.py:91} INFO - Job 13: Subtask wait_orders_pipeline
+[2025-08-16T18:25:07.584+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [running]> on host 392a94efd1c1
+[2025-08-16T18:25:07.870+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='wait_orders_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T09:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-15T09:30:00+00:00'
+[2025-08-16T18:25:07.873+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-16T18:25:07.916+0000] {baseoperator.py:400} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2025-08-16T18:25:07.957+0000] {external_task.py:274} INFO - Poking for DAG 'orders_pipeline' on 2025-08-15T09:30:00+00:00 ... 
+[2025-08-16T18:25:07.959+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.11/site-packages/***/utils/session.py:79: DeprecationWarning: This method is deprecated and will be removed in future.
+  return func(*args, session=session, **kwargs)
+
+[2025-08-16T18:25:08.004+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-16T18:25:08.068+0000] {taskinstance.py:2865} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2025-08-16T18:25:08.118+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-16T18:25:08.202+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-16T18:25:08.207+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-16T18:26:09.773+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-16T18:26:09.845+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:26:09.868+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:26:09.869+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-08-16T18:26:09.902+0000] {taskinstance.py:2330} INFO - Executing <Task(ExternalTaskSensor): wait_orders_pipeline> on 2025-08-15 09:30:00+00:00
+[2025-08-16T18:26:09.912+0000] {standard_task_runner.py:64} INFO - Started process 74 to run task
+[2025-08-16T18:26:09.922+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'wait_orders_pipeline', 'scheduled__2025-08-15T09:30:00+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmpxkmp4zo6']
+[2025-08-16T18:26:09.925+0000] {standard_task_runner.py:91} INFO - Job 15: Subtask wait_orders_pipeline
+[2025-08-16T18:26:10.077+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [running]> on host 392a94efd1c1
+[2025-08-16T18:26:10.525+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='wait_orders_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T09:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-15T09:30:00+00:00'
+[2025-08-16T18:26:10.527+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-16T18:26:10.581+0000] {baseoperator.py:400} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2025-08-16T18:26:10.631+0000] {external_task.py:274} INFO - Poking for DAG 'orders_pipeline' on 2025-08-15T09:30:00+00:00 ... 
+[2025-08-16T18:26:10.635+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.11/site-packages/***/utils/session.py:79: DeprecationWarning: This method is deprecated and will be removed in future.
+  return func(*args, session=session, **kwargs)
+
+[2025-08-16T18:26:10.686+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-16T18:26:10.746+0000] {taskinstance.py:2865} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2025-08-16T18:26:10.784+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-16T18:26:10.861+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-16T18:26:10.866+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-16T18:27:12.284+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-16T18:27:12.359+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:27:12.381+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:27:12.381+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-08-16T18:27:12.417+0000] {taskinstance.py:2330} INFO - Executing <Task(ExternalTaskSensor): wait_orders_pipeline> on 2025-08-15 09:30:00+00:00
+[2025-08-16T18:27:12.432+0000] {standard_task_runner.py:64} INFO - Started process 78 to run task
+[2025-08-16T18:27:12.442+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'wait_orders_pipeline', 'scheduled__2025-08-15T09:30:00+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmpn7fz_t2q']
+[2025-08-16T18:27:12.445+0000] {standard_task_runner.py:91} INFO - Job 17: Subtask wait_orders_pipeline
+[2025-08-16T18:27:12.601+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [running]> on host 392a94efd1c1
+[2025-08-16T18:27:12.875+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='wait_orders_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T09:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-15T09:30:00+00:00'
+[2025-08-16T18:27:12.877+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-16T18:27:12.909+0000] {baseoperator.py:400} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2025-08-16T18:27:12.940+0000] {external_task.py:274} INFO - Poking for DAG 'orders_pipeline' on 2025-08-15T09:30:00+00:00 ... 
+[2025-08-16T18:27:12.941+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.11/site-packages/***/utils/session.py:79: DeprecationWarning: This method is deprecated and will be removed in future.
+  return func(*args, session=session, **kwargs)
+
+[2025-08-16T18:27:12.975+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-16T18:27:13.030+0000] {taskinstance.py:2865} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2025-08-16T18:27:13.061+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-16T18:27:13.137+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-16T18:27:13.141+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-16T18:28:14.846+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-16T18:28:14.914+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:28:14.934+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:28:14.935+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-08-16T18:28:15.137+0000] {taskinstance.py:2330} INFO - Executing <Task(ExternalTaskSensor): wait_orders_pipeline> on 2025-08-15 09:30:00+00:00
+[2025-08-16T18:28:15.148+0000] {standard_task_runner.py:64} INFO - Started process 82 to run task
+[2025-08-16T18:28:15.157+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'wait_orders_pipeline', 'scheduled__2025-08-15T09:30:00+00:00', '--job-id', '19', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmpn54sst05']
+[2025-08-16T18:28:15.160+0000] {standard_task_runner.py:91} INFO - Job 19: Subtask wait_orders_pipeline
+[2025-08-16T18:28:15.532+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [running]> on host 392a94efd1c1
+[2025-08-16T18:28:15.940+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='wait_orders_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T09:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-15T09:30:00+00:00'
+[2025-08-16T18:28:15.942+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-16T18:28:15.974+0000] {baseoperator.py:400} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2025-08-16T18:28:16.015+0000] {external_task.py:274} INFO - Poking for DAG 'orders_pipeline' on 2025-08-15T09:30:00+00:00 ... 
+[2025-08-16T18:28:16.016+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.11/site-packages/***/utils/session.py:79: DeprecationWarning: This method is deprecated and will be removed in future.
+  return func(*args, session=session, **kwargs)
+
+[2025-08-16T18:28:16.050+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-16T18:28:16.188+0000] {taskinstance.py:2865} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2025-08-16T18:28:16.217+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-16T18:28:16.296+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-16T18:28:16.347+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-16T18:29:17.785+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-16T18:29:17.849+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:29:17.865+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:29:17.866+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-08-16T18:29:17.898+0000] {taskinstance.py:2330} INFO - Executing <Task(ExternalTaskSensor): wait_orders_pipeline> on 2025-08-15 09:30:00+00:00
+[2025-08-16T18:29:17.909+0000] {standard_task_runner.py:64} INFO - Started process 86 to run task
+[2025-08-16T18:29:17.917+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'wait_orders_pipeline', 'scheduled__2025-08-15T09:30:00+00:00', '--job-id', '21', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmpshylgksy']
+[2025-08-16T18:29:17.920+0000] {standard_task_runner.py:91} INFO - Job 21: Subtask wait_orders_pipeline
+[2025-08-16T18:29:18.066+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [running]> on host 392a94efd1c1
+[2025-08-16T18:29:18.379+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='wait_orders_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T09:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-15T09:30:00+00:00'
+[2025-08-16T18:29:18.381+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-16T18:29:18.421+0000] {baseoperator.py:400} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2025-08-16T18:29:18.461+0000] {external_task.py:274} INFO - Poking for DAG 'orders_pipeline' on 2025-08-15T09:30:00+00:00 ... 
+[2025-08-16T18:29:18.462+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.11/site-packages/***/utils/session.py:79: DeprecationWarning: This method is deprecated and will be removed in future.
+  return func(*args, session=session, **kwargs)
+
+[2025-08-16T18:29:18.512+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-16T18:29:18.585+0000] {taskinstance.py:2865} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2025-08-16T18:29:18.614+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-16T18:29:18.754+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-16T18:29:18.760+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-16T18:30:21.297+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-16T18:30:21.485+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:30:21.512+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:30:21.513+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-08-16T18:30:21.573+0000] {taskinstance.py:2330} INFO - Executing <Task(ExternalTaskSensor): wait_orders_pipeline> on 2025-08-15 09:30:00+00:00
+[2025-08-16T18:30:21.592+0000] {standard_task_runner.py:64} INFO - Started process 90 to run task
+[2025-08-16T18:30:21.610+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'wait_orders_pipeline', 'scheduled__2025-08-15T09:30:00+00:00', '--job-id', '23', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmp10lt5rgf']
+[2025-08-16T18:30:21.619+0000] {standard_task_runner.py:91} INFO - Job 23: Subtask wait_orders_pipeline
+[2025-08-16T18:30:22.006+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [running]> on host 392a94efd1c1
+[2025-08-16T18:30:22.498+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='wait_orders_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T09:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-15T09:30:00+00:00'
+[2025-08-16T18:30:22.505+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-16T18:30:22.583+0000] {baseoperator.py:400} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2025-08-16T18:30:22.638+0000] {external_task.py:274} INFO - Poking for DAG 'orders_pipeline' on 2025-08-15T09:30:00+00:00 ... 
+[2025-08-16T18:30:22.641+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.11/site-packages/***/utils/session.py:79: DeprecationWarning: This method is deprecated and will be removed in future.
+  return func(*args, session=session, **kwargs)
+
+[2025-08-16T18:30:22.689+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-16T18:30:22.782+0000] {taskinstance.py:2865} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2025-08-16T18:30:22.843+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-16T18:30:22.960+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-16T18:30:22.964+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-16T18:31:24.717+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-16T18:31:24.790+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:31:24.813+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:31:24.813+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-08-16T18:31:24.851+0000] {taskinstance.py:2330} INFO - Executing <Task(ExternalTaskSensor): wait_orders_pipeline> on 2025-08-15 09:30:00+00:00
+[2025-08-16T18:31:24.863+0000] {standard_task_runner.py:64} INFO - Started process 94 to run task
+[2025-08-16T18:31:24.872+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'wait_orders_pipeline', 'scheduled__2025-08-15T09:30:00+00:00', '--job-id', '25', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmpihu68ab_']
+[2025-08-16T18:31:24.876+0000] {standard_task_runner.py:91} INFO - Job 25: Subtask wait_orders_pipeline
+[2025-08-16T18:31:25.082+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [running]> on host 392a94efd1c1
+[2025-08-16T18:31:25.512+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='wait_orders_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T09:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-15T09:30:00+00:00'
+[2025-08-16T18:31:25.514+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-16T18:31:25.555+0000] {baseoperator.py:400} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2025-08-16T18:31:25.599+0000] {external_task.py:274} INFO - Poking for DAG 'orders_pipeline' on 2025-08-15T09:30:00+00:00 ... 
+[2025-08-16T18:31:25.600+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.11/site-packages/***/utils/session.py:79: DeprecationWarning: This method is deprecated and will be removed in future.
+  return func(*args, session=session, **kwargs)
+
+[2025-08-16T18:31:25.636+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-16T18:31:25.695+0000] {taskinstance.py:2865} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2025-08-16T18:31:25.735+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-16T18:31:25.809+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-16T18:31:25.814+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-16T18:32:26.721+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-16T18:32:26.791+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:32:26.811+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:32:26.812+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-08-16T18:32:26.846+0000] {taskinstance.py:2330} INFO - Executing <Task(ExternalTaskSensor): wait_orders_pipeline> on 2025-08-15 09:30:00+00:00
+[2025-08-16T18:32:26.857+0000] {standard_task_runner.py:64} INFO - Started process 98 to run task
+[2025-08-16T18:32:26.870+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'wait_orders_pipeline', 'scheduled__2025-08-15T09:30:00+00:00', '--job-id', '27', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmp3hejvg3r']
+[2025-08-16T18:32:26.874+0000] {standard_task_runner.py:91} INFO - Job 27: Subtask wait_orders_pipeline
+[2025-08-16T18:32:27.039+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [running]> on host 392a94efd1c1
+[2025-08-16T18:32:27.313+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='wait_orders_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T09:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-15T09:30:00+00:00'
+[2025-08-16T18:32:27.315+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-16T18:32:27.346+0000] {baseoperator.py:400} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2025-08-16T18:32:27.382+0000] {external_task.py:274} INFO - Poking for DAG 'orders_pipeline' on 2025-08-15T09:30:00+00:00 ... 
+[2025-08-16T18:32:27.383+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.11/site-packages/***/utils/session.py:79: DeprecationWarning: This method is deprecated and will be removed in future.
+  return func(*args, session=session, **kwargs)
+
+[2025-08-16T18:32:27.416+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-16T18:32:27.475+0000] {taskinstance.py:2865} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2025-08-16T18:32:27.527+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-16T18:32:27.603+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-16T18:32:27.608+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-16T18:33:29.337+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-16T18:33:29.495+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:33:29.526+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:33:29.527+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-08-16T18:33:29.598+0000] {taskinstance.py:2330} INFO - Executing <Task(ExternalTaskSensor): wait_orders_pipeline> on 2025-08-15 09:30:00+00:00
+[2025-08-16T18:33:29.631+0000] {standard_task_runner.py:64} INFO - Started process 102 to run task
+[2025-08-16T18:33:29.653+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'wait_orders_pipeline', 'scheduled__2025-08-15T09:30:00+00:00', '--job-id', '29', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmpl7k8vjcr']
+[2025-08-16T18:33:29.667+0000] {standard_task_runner.py:91} INFO - Job 29: Subtask wait_orders_pipeline
+[2025-08-16T18:33:29.861+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [running]> on host 392a94efd1c1
+[2025-08-16T18:33:30.125+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='wait_orders_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T09:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-15T09:30:00+00:00'
+[2025-08-16T18:33:30.127+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-16T18:33:30.162+0000] {baseoperator.py:400} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2025-08-16T18:33:30.193+0000] {external_task.py:274} INFO - Poking for DAG 'orders_pipeline' on 2025-08-15T09:30:00+00:00 ... 
+[2025-08-16T18:33:30.194+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.11/site-packages/***/utils/session.py:79: DeprecationWarning: This method is deprecated and will be removed in future.
+  return func(*args, session=session, **kwargs)
+
+[2025-08-16T18:33:30.229+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-16T18:33:30.288+0000] {taskinstance.py:2865} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2025-08-16T18:33:30.325+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-16T18:33:30.430+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-16T18:33:30.435+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-16T18:34:32.259+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-16T18:34:32.322+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:34:32.338+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:34:32.339+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-08-16T18:34:32.372+0000] {taskinstance.py:2330} INFO - Executing <Task(ExternalTaskSensor): wait_orders_pipeline> on 2025-08-15 09:30:00+00:00
+[2025-08-16T18:34:32.385+0000] {standard_task_runner.py:64} INFO - Started process 106 to run task
+[2025-08-16T18:34:32.393+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'wait_orders_pipeline', 'scheduled__2025-08-15T09:30:00+00:00', '--job-id', '31', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmpry_l64b8']
+[2025-08-16T18:34:32.397+0000] {standard_task_runner.py:91} INFO - Job 31: Subtask wait_orders_pipeline
+[2025-08-16T18:34:32.541+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [running]> on host 392a94efd1c1
+[2025-08-16T18:34:32.801+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='wait_orders_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T09:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-15T09:30:00+00:00'
+[2025-08-16T18:34:32.804+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-16T18:34:32.831+0000] {baseoperator.py:400} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2025-08-16T18:34:32.865+0000] {external_task.py:274} INFO - Poking for DAG 'orders_pipeline' on 2025-08-15T09:30:00+00:00 ... 
+[2025-08-16T18:34:32.867+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.11/site-packages/***/utils/session.py:79: DeprecationWarning: This method is deprecated and will be removed in future.
+  return func(*args, session=session, **kwargs)
+
+[2025-08-16T18:34:32.899+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-16T18:34:32.955+0000] {taskinstance.py:2865} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2025-08-16T18:34:33.012+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-16T18:34:33.085+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-16T18:34:33.090+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-16T18:35:34.940+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-16T18:35:35.025+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:35:35.047+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [queued]>
+[2025-08-16T18:35:35.048+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-08-16T18:35:35.090+0000] {taskinstance.py:2330} INFO - Executing <Task(ExternalTaskSensor): wait_orders_pipeline> on 2025-08-15 09:30:00+00:00
+[2025-08-16T18:35:35.103+0000] {standard_task_runner.py:64} INFO - Started process 110 to run task
+[2025-08-16T18:35:35.112+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'wait_orders_pipeline', 'scheduled__2025-08-15T09:30:00+00:00', '--job-id', '33', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmpim36uabp']
+[2025-08-16T18:35:35.116+0000] {standard_task_runner.py:91} INFO - Job 33: Subtask wait_orders_pipeline
+[2025-08-16T18:35:35.294+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.wait_orders_pipeline scheduled__2025-08-15T09:30:00+00:00 [running]> on host 392a94efd1c1
+[2025-08-16T18:35:35.601+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='wait_orders_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T09:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-15T09:30:00+00:00'
+[2025-08-16T18:35:35.604+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-16T18:35:35.643+0000] {baseoperator.py:400} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2025-08-16T18:35:35.682+0000] {external_task.py:274} INFO - Poking for DAG 'orders_pipeline' on 2025-08-15T09:30:00+00:00 ... 
+[2025-08-16T18:35:35.684+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.11/site-packages/***/utils/session.py:79: DeprecationWarning: This method is deprecated and will be removed in future.
+  return func(*args, session=session, **kwargs)
+
+[2025-08-16T18:35:35.724+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-16T18:35:35.793+0000] {taskinstance.py:2865} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2025-08-16T18:35:35.854+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-16T18:35:35.941+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-16T18:35:35.946+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

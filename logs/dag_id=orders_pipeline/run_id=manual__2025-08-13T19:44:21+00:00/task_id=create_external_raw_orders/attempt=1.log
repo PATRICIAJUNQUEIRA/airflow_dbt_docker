@@ -1,0 +1,40 @@
+[2025-08-13T19:44:27.925+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-13T19:44:27.949+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: orders_pipeline.create_external_raw_orders manual__2025-08-13T19:44:21+00:00 [queued]>
+[2025-08-13T19:44:27.958+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: orders_pipeline.create_external_raw_orders manual__2025-08-13T19:44:21+00:00 [queued]>
+[2025-08-13T19:44:27.958+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-13T19:44:27.973+0000] {taskinstance.py:2330} INFO - Executing <Task(AthenaOperator): create_external_raw_orders> on 2025-08-13 19:44:21+00:00
+[2025-08-13T19:44:27.979+0000] {standard_task_runner.py:64} INFO - Started process 74 to run task
+[2025-08-13T19:44:27.983+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'orders_pipeline', 'create_external_raw_orders', 'manual__2025-08-13T19:44:21+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/orders_pipeline.py', '--cfg-path', '/tmp/tmp8b403pys']
+[2025-08-13T19:44:27.985+0000] {standard_task_runner.py:91} INFO - Job 9: Subtask create_external_raw_orders
+[2025-08-13T19:44:28.055+0000] {task_command.py:426} INFO - Running <TaskInstance: orders_pipeline.create_external_raw_orders manual__2025-08-13T19:44:21+00:00 [running]> on host fb6a3d62f72f
+[2025-08-13T19:44:28.178+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-eng' AIRFLOW_CTX_DAG_ID='orders_pipeline' AIRFLOW_CTX_TASK_ID='create_external_raw_orders' AIRFLOW_CTX_EXECUTION_DATE='2025-08-13T19:44:21+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-13T19:44:21+00:00'
+[2025-08-13T19:44:28.179+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-13T19:44:28.192+0000] {athena.py:132} INFO - Running Query with params:
+	QueryString: 
+		
+		CREATE EXTERNAL TABLE IF NOT EXISTS analytics.raw_orders (
+		  order_id int,
+		  order_date date,
+		  customer string,
+		  amount double
+		)
+		ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+		WITH SERDEPROPERTIES (
+		  'serialization.format' = ',',
+		  'field.delim' = ','
+		)
+		LOCATION 's3://pt-data-lab/raw-data/'
+		TBLPROPERTIES ('skip.header.line.count'='1');
+	QueryExecutionContext: {'Database': 'analytics', 'Catalog': 'AwsDataCatalog'}
+	ResultConfiguration: {'OutputLocation': 's3://pt-data-lab/athena-staging/'}
+	WorkGroup: primary
+[2025-08-13T19:44:28.207+0000] {base_aws.py:587} WARNING - Unable to find AWS Connection ID 'aws_default', switching to empty.
+[2025-08-13T19:44:28.208+0000] {base_aws.py:164} INFO - No connection ID provided. Fallback on boto3 credential strategy (region_name=None). See: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
+[2025-08-13T19:44:28.475+0000] {credentials.py:1147} INFO - Found credentials in environment variables.
+[2025-08-13T19:44:29.526+0000] {athena.py:135} INFO - Query execution id: 4dc71a0f-87a2-4828-9fe7-a17122032f4a
+[2025-08-13T19:44:29.760+0000] {waiter_with_logging.py:78} INFO - Query execution id: 4dc71a0f-87a2-4828-9fe7-a17122032f4a, Query is still in non-terminal state: RUNNING
+[2025-08-13T19:44:35.374+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-13T19:44:35.409+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=orders_pipeline, task_id=create_external_raw_orders, run_id=manual__2025-08-13T19:44:21+00:00, execution_date=20250813T194421, start_date=20250813T194427, end_date=20250813T194435
+[2025-08-13T19:44:35.452+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-13T19:44:35.483+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-08-13T19:44:35.486+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

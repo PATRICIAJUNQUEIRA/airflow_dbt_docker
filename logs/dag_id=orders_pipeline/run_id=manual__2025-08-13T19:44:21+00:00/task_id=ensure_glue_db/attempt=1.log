@@ -1,0 +1,18 @@
+[2025-08-13T19:44:25.672+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-13T19:44:25.696+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: orders_pipeline.ensure_glue_db manual__2025-08-13T19:44:21+00:00 [queued]>
+[2025-08-13T19:44:25.704+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: orders_pipeline.ensure_glue_db manual__2025-08-13T19:44:21+00:00 [queued]>
+[2025-08-13T19:44:25.705+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-13T19:44:25.719+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): ensure_glue_db> on 2025-08-13 19:44:21+00:00
+[2025-08-13T19:44:25.725+0000] {standard_task_runner.py:64} INFO - Started process 72 to run task
+[2025-08-13T19:44:25.729+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'orders_pipeline', 'ensure_glue_db', 'manual__2025-08-13T19:44:21+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/orders_pipeline.py', '--cfg-path', '/tmp/tmp8s_nao4o']
+[2025-08-13T19:44:25.731+0000] {standard_task_runner.py:91} INFO - Job 8: Subtask ensure_glue_db
+[2025-08-13T19:44:25.803+0000] {task_command.py:426} INFO - Running <TaskInstance: orders_pipeline.ensure_glue_db manual__2025-08-13T19:44:21+00:00 [running]> on host fb6a3d62f72f
+[2025-08-13T19:44:25.932+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-eng' AIRFLOW_CTX_DAG_ID='orders_pipeline' AIRFLOW_CTX_TASK_ID='ensure_glue_db' AIRFLOW_CTX_EXECUTION_DATE='2025-08-13T19:44:21+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-13T19:44:21+00:00'
+[2025-08-13T19:44:25.933+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-13T19:44:25.962+0000] {credentials.py:1147} INFO - Found credentials in environment variables.
+[2025-08-13T19:44:27.070+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-08-13T19:44:27.071+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-13T19:44:27.088+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=orders_pipeline, task_id=ensure_glue_db, run_id=manual__2025-08-13T19:44:21+00:00, execution_date=20250813T194421, start_date=20250813T194425, end_date=20250813T194427
+[2025-08-13T19:44:27.161+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-13T19:44:27.193+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-08-13T19:44:27.196+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,558 @@
+[0m17:45:20.916106 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7266f7bfa9d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7266f7c47790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7266f7c46510>]}
+
+
+============================== 17:45:20.924059 | 454acc5f-70dc-4659-89d0-243512c846e5 ==============================
+[0m17:45:20.924059 [info ] [MainThread]: Running with dbt=1.9.2
+[0m17:45:20.925133 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/airflow/.dbt', 'debug': 'False', 'version_check': 'True', 'log_path': '/opt/airflow/dbt/logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --select aws_local_elt.processed.orders_clean --full-refresh --log-level debug', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m17:45:21.766677 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '454acc5f-70dc-4659-89d0-243512c846e5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7266f59c3f50>]}
+[0m17:45:21.862048 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '454acc5f-70dc-4659-89d0-243512c846e5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7266f9d136d0>]}
+[0m17:45:21.863479 [info ] [MainThread]: Registered adapter: athena=1.9.4
+[0m17:45:22.043679 [debug] [MainThread]: checksum: 12b12750b70de726cfd89136b8e24afc3f3e77597a97bff40ab7e5f9b39d5e18, vars: {}, profile: , target: , version: 1.9.2
+[0m17:45:22.046708 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m17:45:22.047697 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '454acc5f-70dc-4659-89d0-243512c846e5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7266f587e690>]}
+[0m17:45:25.583169 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '454acc5f-70dc-4659-89d0-243512c846e5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7266f559dd10>]}
+[0m17:45:25.735365 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m17:45:25.738194 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m17:45:25.795470 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '454acc5f-70dc-4659-89d0-243512c846e5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7266f42a9f50>]}
+[0m17:45:25.800143 [info ] [MainThread]: Found 3 models, 4 data tests, 1 source, 511 macros
+[0m17:45:25.803991 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '454acc5f-70dc-4659-89d0-243512c846e5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7266f4415cd0>]}
+[0m17:45:25.809000 [info ] [MainThread]: 
+[0m17:45:25.810315 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:45:25.811462 [info ] [MainThread]: 
+[0m17:45:25.813667 [debug] [MainThread]: Acquiring new athena connection 'master'
+[0m17:45:25.818631 [debug] [ThreadPool]: Acquiring new athena connection 'list_AwsDataCatalog'
+[0m17:45:25.820069 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:45:27.053649 [debug] [ThreadPool]: On list_AwsDataCatalog: Close
+[0m17:45:27.065138 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_AwsDataCatalog, now list_AwsDataCatalog_analytics)
+[0m17:45:27.066719 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:45:28.872403 [debug] [ThreadPool]: On list_AwsDataCatalog_analytics: Close
+[0m17:45:28.875071 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '454acc5f-70dc-4659-89d0-243512c846e5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7266f4363a50>]}
+[0m17:45:28.880875 [debug] [Thread-1 (]: Began running node model.aws_local_elt.orders_clean
+[0m17:45:28.882752 [info ] [Thread-1 (]: 1 of 1 START sql table model analytics.orders_clean ............................ [RUN]
+[0m17:45:28.884438 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_AwsDataCatalog_analytics, now model.aws_local_elt.orders_clean)
+[0m17:45:28.885765 [debug] [Thread-1 (]: Began compiling node model.aws_local_elt.orders_clean
+[0m17:45:28.903369 [debug] [Thread-1 (]: Writing injected SQL for node "model.aws_local_elt.orders_clean"
+[0m17:45:28.908233 [debug] [Thread-1 (]: Began executing node model.aws_local_elt.orders_clean
+[0m17:45:28.980676 [debug] [Thread-1 (]: Skip partitioning: False
+[0m17:45:28.981634 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: get_work_group for %s
+[0m17:45:28.982311 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:45:30.542271 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: S3 path does not exist
+[0m17:45:30.544285 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: Running Athena query:
+-- /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "default", "target_name": "dev", "node_id": "model.aws_local_elt.orders_clean"} */
+create table "AwsDataCatalog"."analytics"."orders_clean"
+    with (
+      table_type='hive',
+      is_external=true,external_location='s3://pt-data-lab/processed-data/analytics/orders_clean/118df8b1-5692-421d-973b-4dce07662883',
+      format='parquet'
+    )
+    as
+      
+
+with src as (
+  select *
+  from "AwsDataCatalog"."analytics"."orders_raw"
+)
+
+select
+  cast(order_id as varchar)   as order_id,
+  cast(customer  as varchar)  as customer_id,
+  try(cast(amount as double)) as amount,
+  case
+    when dt is null or length(trim(dt)) = 0 then null
+    else try(cast(trim(dt) as date))
+  end                         as dt
+from src
+[0m17:45:31.222020 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: Athena query ID bbd93fa6-3e88-4d4c-b3c9-4e2021295b1d
+[0m17:45:34.272757 [debug] [Thread-1 (]: COMPILED CODE RESULT: {"rowcount":13,"data_scanned_in_bytes":308}
+[0m17:45:34.281543 [debug] [Thread-1 (]: Using athena connection "model.aws_local_elt.orders_clean"
+[0m17:45:34.282654 [debug] [Thread-1 (]: On model.aws_local_elt.orders_clean: alter table `analytics`.`orders_clean` set tblproperties ('classification' = 'parquet')
+[0m17:45:34.573843 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: Athena query ID d6ad1b15-acf8-4def-96aa-9fef2249e587
+[0m17:45:36.448370 [debug] [Thread-1 (]: SQL status: OK -1 in 2.164 seconds
+[0m17:45:36.450498 [debug] [Thread-1 (]: Writing runtime sql for node "model.aws_local_elt.orders_clean"
+[0m17:45:36.454393 [debug] [Thread-1 (]: Using athena connection "model.aws_local_elt.orders_clean"
+[0m17:45:36.455514 [debug] [Thread-1 (]: On model.aws_local_elt.orders_clean: -- /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "default", "target_name": "dev", "node_id": "model.aws_local_elt.orders_clean"} */
+SELECT '{"rowcount":13,"data_scanned_in_bytes":308}';
+[0m17:45:36.690385 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: Athena query ID 7549a6b9-77df-46eb-bf90-7348609bb99e
+[0m17:45:38.564567 [debug] [Thread-1 (]: SQL status: OK 13 in 2.108 seconds
+[0m17:45:38.577011 [debug] [Thread-1 (]: On model.aws_local_elt.orders_clean: Close
+[0m17:45:38.586442 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '454acc5f-70dc-4659-89d0-243512c846e5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7266f413e450>]}
+[0m17:45:38.588630 [info ] [Thread-1 (]: 1 of 1 OK created sql table model analytics.orders_clean ....................... [[32mOK 13[0m in 9.70s]
+[0m17:45:38.590674 [debug] [Thread-1 (]: Finished running node model.aws_local_elt.orders_clean
+[0m17:45:38.595323 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:45:38.596601 [debug] [MainThread]: Connection 'model.aws_local_elt.orders_clean' was properly closed.
+[0m17:45:38.598114 [info ] [MainThread]: 
+[0m17:45:38.601042 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 12.78 seconds (12.78s).
+[0m17:45:38.603534 [debug] [MainThread]: Command end result
+[0m17:45:38.770124 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m17:45:38.772276 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m17:45:38.779969 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m17:45:38.780720 [info ] [MainThread]: 
+[0m17:45:38.781984 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:45:38.782546 [info ] [MainThread]: 
+[0m17:45:38.783047 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m17:45:38.784537 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 17.938631, "process_in_blocks": "0", "process_kernel_time": 1.250485, "process_mem_max_rss": "181260", "process_out_blocks": "3536", "process_user_time": 9.101432}
+[0m17:45:38.785325 [debug] [MainThread]: Command `dbt run` succeeded at 17:45:38.785168 after 17.94 seconds
+[0m17:45:38.786120 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7266fbb32990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7266fbbf7fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7266fbc0df90>]}
+[0m17:45:38.786993 [debug] [MainThread]: Flushing usage events
+[0m17:45:39.696796 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:51:48.427369 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72a98fb0f010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72a98fabb6d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72a98fcdca90>]}
+
+
+============================== 17:51:48.433941 | 8ba47a9f-60ce-4cd6-9a45-1105cfae9e66 ==============================
+[0m17:51:48.433941 [info ] [MainThread]: Running with dbt=1.9.2
+[0m17:51:48.434876 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/opt/airflow/dbt/logs', 'debug': 'False', 'profiles_dir': '/opt/airflow/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt build --select aws_local_elt.processed.orders_clean+ --log-level debug', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m17:51:49.142226 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '8ba47a9f-60ce-4cd6-9a45-1105cfae9e66', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72a98d81a2d0>]}
+[0m17:51:49.230028 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '8ba47a9f-60ce-4cd6-9a45-1105cfae9e66', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72a991cbe4d0>]}
+[0m17:51:49.231666 [info ] [MainThread]: Registered adapter: athena=1.9.4
+[0m17:51:49.431495 [debug] [MainThread]: checksum: 12b12750b70de726cfd89136b8e24afc3f3e77597a97bff40ab7e5f9b39d5e18, vars: {}, profile: , target: , version: 1.9.2
+[0m17:51:49.583096 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m17:51:49.583964 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m17:51:49.696179 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '8ba47a9f-60ce-4cd6-9a45-1105cfae9e66', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72a98efedf50>]}
+[0m17:51:49.835472 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m17:51:49.838897 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m17:51:49.893342 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '8ba47a9f-60ce-4cd6-9a45-1105cfae9e66', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72a98d28b690>]}
+[0m17:51:49.895071 [info ] [MainThread]: Found 3 models, 4 data tests, 1 source, 511 macros
+[0m17:51:49.899542 [info ] [MainThread]: 
+[0m17:51:49.900720 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:51:49.901923 [info ] [MainThread]: 
+[0m17:51:49.904572 [debug] [MainThread]: Acquiring new athena connection 'master'
+[0m17:51:49.907515 [debug] [ThreadPool]: Acquiring new athena connection 'list_AwsDataCatalog'
+[0m17:51:49.909032 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:51:50.998564 [debug] [ThreadPool]: On list_AwsDataCatalog: Close
+[0m17:51:51.009674 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_AwsDataCatalog, now list_AwsDataCatalog_analytics)
+[0m17:51:51.010717 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:51:52.732178 [debug] [ThreadPool]: On list_AwsDataCatalog_analytics: Close
+[0m17:51:52.734536 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '8ba47a9f-60ce-4cd6-9a45-1105cfae9e66', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72a98c83d590>]}
+[0m17:51:52.739198 [debug] [Thread-1 (]: Began running node model.aws_local_elt.orders_clean
+[0m17:51:52.740522 [info ] [Thread-1 (]: 1 of 5 START sql table model analytics.orders_clean ............................ [RUN]
+[0m17:51:52.741937 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_AwsDataCatalog_analytics, now model.aws_local_elt.orders_clean)
+[0m17:51:52.743080 [debug] [Thread-1 (]: Began compiling node model.aws_local_elt.orders_clean
+[0m17:51:52.759936 [debug] [Thread-1 (]: Writing injected SQL for node "model.aws_local_elt.orders_clean"
+[0m17:51:52.761676 [debug] [Thread-1 (]: Began executing node model.aws_local_elt.orders_clean
+[0m17:51:52.815592 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:51:54.572410 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: table_name : 657552582906.analytics.orders_clean
+[0m17:51:54.573160 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: table type : TableType.TABLE
+[0m17:51:54.576272 [debug] [Thread-1 (]: Dropping relation via Glue and S3 APIs
+[0m17:51:56.113256 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: table_name : 657552582906.analytics.orders_clean
+[0m17:51:56.114448 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: table type : TableType.TABLE
+[0m17:51:56.115963 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: "AwsDataCatalog"."analytics"."orders_clean" is stored in s3://pt-data-lab/processed-data/analytics/orders_clean/118df8b1-5692-421d-973b-4dce07662883
+[0m17:51:57.068395 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: Deleting table data: path='s3://pt-data-lab/processed-data/analytics/orders_clean/118df8b1-5692-421d-973b-4dce07662883', bucket='pt-data-lab', prefix='processed-data/analytics/orders_clean/118df8b1-5692-421d-973b-4dce07662883/'
+[0m17:51:59.514444 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: Deleted table from glue catalog: "AwsDataCatalog"."analytics"."orders_clean"
+[0m17:51:59.545791 [debug] [Thread-1 (]: Skip partitioning: False
+[0m17:51:59.548302 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: get_work_group for %s
+[0m17:52:00.769058 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: S3 path does not exist
+[0m17:52:00.770353 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: Running Athena query:
+-- /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "default", "target_name": "dev", "node_id": "model.aws_local_elt.orders_clean"} */
+create table "AwsDataCatalog"."analytics"."orders_clean"
+    with (
+      table_type='hive',
+      is_external=true,external_location='s3://pt-data-lab/processed-data/analytics/orders_clean/178ac008-faa6-4c68-bd89-d0380cad2d31',
+      format='parquet'
+    )
+    as
+      
+
+with src as (
+  select *
+  from "AwsDataCatalog"."analytics"."orders_raw"
+)
+
+select
+  cast(order_id as varchar)   as order_id,
+  cast(customer  as varchar)  as customer_id,
+  try(cast(amount as double)) as amount,
+  case
+    when dt is null or length(trim(dt)) = 0 then null
+    else try(cast(trim(dt) as date))
+  end                         as dt
+from src
+[0m17:52:01.389861 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: Athena query ID 5f7f3b45-fd9a-42b5-8fe6-fdffb03bd5c6
+[0m17:52:03.224712 [debug] [Thread-1 (]: COMPILED CODE RESULT: {"rowcount":13,"data_scanned_in_bytes":308}
+[0m17:52:03.232104 [debug] [Thread-1 (]: Using athena connection "model.aws_local_elt.orders_clean"
+[0m17:52:03.232770 [debug] [Thread-1 (]: On model.aws_local_elt.orders_clean: alter table `analytics`.`orders_clean` set tblproperties ('classification' = 'parquet')
+[0m17:52:03.461217 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: Athena query ID f1979bd6-b07b-4af4-9337-702df5f96df9
+[0m17:52:05.307658 [debug] [Thread-1 (]: SQL status: OK -1 in 2.074 seconds
+[0m17:52:05.309518 [debug] [Thread-1 (]: Writing runtime sql for node "model.aws_local_elt.orders_clean"
+[0m17:52:05.310946 [debug] [Thread-1 (]: Using athena connection "model.aws_local_elt.orders_clean"
+[0m17:52:05.311830 [debug] [Thread-1 (]: On model.aws_local_elt.orders_clean: -- /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "default", "target_name": "dev", "node_id": "model.aws_local_elt.orders_clean"} */
+SELECT '{"rowcount":13,"data_scanned_in_bytes":308}';
+[0m17:52:05.532669 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: Athena query ID 691cc2bf-ac72-4a51-8f64-ca45194f15fd
+[0m17:52:07.423984 [debug] [Thread-1 (]: SQL status: OK 13 in 2.111 seconds
+[0m17:52:07.432294 [debug] [Thread-1 (]: On model.aws_local_elt.orders_clean: Close
+[0m17:52:07.435258 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '8ba47a9f-60ce-4cd6-9a45-1105cfae9e66', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72a98c209cd0>]}
+[0m17:52:07.437041 [info ] [Thread-1 (]: 1 of 5 OK created sql table model analytics.orders_clean ....................... [[32mOK 13[0m in 14.69s]
+[0m17:52:07.438572 [debug] [Thread-1 (]: Finished running node model.aws_local_elt.orders_clean
+[0m17:52:07.444618 [debug] [Thread-3 (]: Began running node test.aws_local_elt.not_null_orders_clean_amount.091b8d0018
+[0m17:52:07.446302 [debug] [Thread-4 (]: Began running node test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720
+[0m17:52:07.448451 [debug] [Thread-2 (]: Began running node test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de
+[0m17:52:07.449206 [debug] [Thread-1 (]: Began running node test.aws_local_elt.unique_orders_clean_order_id.a141020452
+[0m17:52:07.450263 [info ] [Thread-3 (]: 2 of 5 START test not_null_orders_clean_amount ................................. [RUN]
+[0m17:52:07.451965 [info ] [Thread-4 (]: 3 of 5 START test not_null_orders_clean_customer_id ............................ [RUN]
+[0m17:52:07.455491 [info ] [Thread-2 (]: 4 of 5 START test not_null_orders_clean_order_id ............................... [RUN]
+[0m17:52:07.457375 [info ] [Thread-1 (]: 5 of 5 START test unique_orders_clean_order_id ................................. [RUN]
+[0m17:52:07.459261 [debug] [Thread-3 (]: Acquiring new athena connection 'test.aws_local_elt.not_null_orders_clean_amount.091b8d0018'
+[0m17:52:07.460947 [debug] [Thread-4 (]: Acquiring new athena connection 'test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720'
+[0m17:52:07.462860 [debug] [Thread-2 (]: Acquiring new athena connection 'test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de'
+[0m17:52:07.464913 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.aws_local_elt.orders_clean, now test.aws_local_elt.unique_orders_clean_order_id.a141020452)
+[0m17:52:07.466208 [debug] [Thread-3 (]: Began compiling node test.aws_local_elt.not_null_orders_clean_amount.091b8d0018
+[0m17:52:07.468001 [debug] [Thread-4 (]: Began compiling node test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720
+[0m17:52:07.471984 [debug] [Thread-2 (]: Began compiling node test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de
+[0m17:52:07.473462 [debug] [Thread-1 (]: Began compiling node test.aws_local_elt.unique_orders_clean_order_id.a141020452
+[0m17:52:07.508135 [debug] [Thread-4 (]: Writing injected SQL for node "test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720"
+[0m17:52:07.511617 [debug] [Thread-3 (]: Writing injected SQL for node "test.aws_local_elt.not_null_orders_clean_amount.091b8d0018"
+[0m17:52:07.521950 [debug] [Thread-2 (]: Writing injected SQL for node "test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de"
+[0m17:52:07.532168 [debug] [Thread-1 (]: Writing injected SQL for node "test.aws_local_elt.unique_orders_clean_order_id.a141020452"
+[0m17:52:07.538504 [debug] [Thread-4 (]: Began executing node test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720
+[0m17:52:07.545062 [debug] [Thread-3 (]: Began executing node test.aws_local_elt.not_null_orders_clean_amount.091b8d0018
+[0m17:52:07.545854 [debug] [Thread-1 (]: Began executing node test.aws_local_elt.unique_orders_clean_order_id.a141020452
+[0m17:52:07.559559 [debug] [Thread-2 (]: Began executing node test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de
+[0m17:52:07.577736 [debug] [Thread-4 (]: Writing runtime sql for node "test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720"
+[0m17:52:07.583679 [debug] [Thread-3 (]: Writing runtime sql for node "test.aws_local_elt.not_null_orders_clean_amount.091b8d0018"
+[0m17:52:07.593473 [debug] [Thread-1 (]: Writing runtime sql for node "test.aws_local_elt.unique_orders_clean_order_id.a141020452"
+[0m17:52:07.599001 [debug] [Thread-2 (]: Writing runtime sql for node "test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de"
+[0m17:52:07.605119 [debug] [Thread-4 (]: Using athena connection "test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720"
+[0m17:52:07.607459 [debug] [Thread-1 (]: Using athena connection "test.aws_local_elt.unique_orders_clean_order_id.a141020452"
+[0m17:52:07.608064 [debug] [Thread-2 (]: Using athena connection "test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de"
+[0m17:52:07.608894 [debug] [Thread-3 (]: Using athena connection "test.aws_local_elt.not_null_orders_clean_amount.091b8d0018"
+[0m17:52:07.609853 [debug] [Thread-4 (]: On test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720: -- /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "default", "target_name": "dev", "node_id": "test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select customer_id
+from "AwsDataCatalog"."analytics"."orders_clean"
+where customer_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:52:07.611549 [debug] [Thread-1 (]: On test.aws_local_elt.unique_orders_clean_order_id.a141020452: -- /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "default", "target_name": "dev", "node_id": "test.aws_local_elt.unique_orders_clean_order_id.a141020452"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    order_id as unique_field,
+    count(*) as n_records
+
+from "AwsDataCatalog"."analytics"."orders_clean"
+where order_id is not null
+group by order_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:52:07.612348 [debug] [Thread-2 (]: On test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de: -- /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "default", "target_name": "dev", "node_id": "test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_id
+from "AwsDataCatalog"."analytics"."orders_clean"
+where order_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:52:07.613711 [debug] [Thread-3 (]: On test.aws_local_elt.not_null_orders_clean_amount.091b8d0018: -- /* {"app": "dbt", "dbt_version": "1.9.2", "profile_name": "default", "target_name": "dev", "node_id": "test.aws_local_elt.not_null_orders_clean_amount.091b8d0018"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select amount
+from "AwsDataCatalog"."analytics"."orders_clean"
+where amount is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:52:07.615981 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m17:52:07.617045 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:52:07.619217 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m17:52:07.622303 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m17:52:09.738849 [debug] [Thread-3 (]: dbt.adapters.athena.constants adapter: Athena query ID c0ec6679-54be-40a1-b6f3-25a61aa5ddee
+[0m17:52:09.745342 [debug] [Thread-4 (]: dbt.adapters.athena.constants adapter: Athena query ID 2d7b8e67-ad88-44fb-8c65-1a6c90f4fc74
+[0m17:52:09.753995 [debug] [Thread-1 (]: dbt.adapters.athena.constants adapter: Athena query ID 0e78496a-b201-47a1-a8be-cc3bd714185c
+[0m17:52:09.764695 [debug] [Thread-2 (]: dbt.adapters.athena.constants adapter: Athena query ID 522c98b7-b8d1-49fa-b413-411872511fb8
+[0m17:52:11.748834 [debug] [Thread-4 (]: SQL status: OK -1 in 4.133 seconds
+[0m17:52:11.750393 [debug] [Thread-2 (]: SQL status: OK -1 in 4.132 seconds
+[0m17:52:11.754605 [debug] [Thread-4 (]: On test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720: Close
+[0m17:52:11.758592 [debug] [Thread-2 (]: On test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de: Close
+[0m17:52:11.760285 [info ] [Thread-4 (]: 3 of 5 PASS not_null_orders_clean_customer_id .................................. [[32mPASS[0m in 4.30s]
+[0m17:52:11.762131 [info ] [Thread-2 (]: 4 of 5 PASS not_null_orders_clean_order_id ..................................... [[32mPASS[0m in 4.30s]
+[0m17:52:11.764229 [debug] [Thread-4 (]: Finished running node test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720
+[0m17:52:11.768165 [debug] [Thread-2 (]: Finished running node test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de
+[0m17:52:11.802322 [debug] [Thread-1 (]: SQL status: OK -1 in 4.185 seconds
+[0m17:52:11.804619 [debug] [Thread-1 (]: On test.aws_local_elt.unique_orders_clean_order_id.a141020452: Close
+[0m17:52:11.805745 [error] [Thread-1 (]: 5 of 5 FAIL 3 unique_orders_clean_order_id ..................................... [[31mFAIL 3[0m in 4.34s]
+[0m17:52:11.806648 [debug] [Thread-1 (]: Finished running node test.aws_local_elt.unique_orders_clean_order_id.a141020452
+[0m17:52:11.807899 [debug] [Thread-7 (]: Marking all children of 'test.aws_local_elt.unique_orders_clean_order_id.a141020452' to be skipped because of status 'fail'.  Reason: Got 3 results, configured to fail if != 0.
+[0m17:52:11.931323 [debug] [Thread-3 (]: SQL status: OK -1 in 4.310 seconds
+[0m17:52:11.933398 [debug] [Thread-3 (]: On test.aws_local_elt.not_null_orders_clean_amount.091b8d0018: Close
+[0m17:52:11.934568 [info ] [Thread-3 (]: 2 of 5 PASS not_null_orders_clean_amount ....................................... [[32mPASS[0m in 4.48s]
+[0m17:52:11.935519 [debug] [Thread-3 (]: Finished running node test.aws_local_elt.not_null_orders_clean_amount.091b8d0018
+[0m17:52:11.940025 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:52:11.941206 [debug] [MainThread]: Connection 'test.aws_local_elt.unique_orders_clean_order_id.a141020452' was properly closed.
+[0m17:52:11.942258 [debug] [MainThread]: Connection 'test.aws_local_elt.not_null_orders_clean_amount.091b8d0018' was properly closed.
+[0m17:52:11.943089 [debug] [MainThread]: Connection 'test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720' was properly closed.
+[0m17:52:11.943936 [debug] [MainThread]: Connection 'test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de' was properly closed.
+[0m17:52:11.944808 [info ] [MainThread]: 
+[0m17:52:11.945911 [info ] [MainThread]: Finished running 1 table model, 4 data tests in 0 hours 0 minutes and 22.04 seconds (22.04s).
+[0m17:52:11.949570 [debug] [MainThread]: Command end result
+[0m17:52:11.985395 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m17:52:11.987604 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m17:52:11.994183 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m17:52:11.994924 [info ] [MainThread]: 
+[0m17:52:11.996080 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m17:52:11.996914 [info ] [MainThread]: 
+[0m17:52:11.998258 [error] [MainThread]: [31mFailure in test unique_orders_clean_order_id (models/processed/_orders.yml)[0m
+[0m17:52:12.000061 [error] [MainThread]:   Got 3 results, configured to fail if != 0
+[0m17:52:12.001576 [info ] [MainThread]: 
+[0m17:52:12.002978 [info ] [MainThread]:   compiled code at target/compiled/aws_local_elt/models/processed/_orders.yml/unique_orders_clean_order_id.sql
+[0m17:52:12.003709 [info ] [MainThread]: 
+[0m17:52:12.005222 [info ] [MainThread]: Done. PASS=4 WARN=0 ERROR=1 SKIP=0 TOTAL=5
+[0m17:52:12.007071 [debug] [MainThread]: Resource report: {"command_name": "build", "command_success": false, "command_wall_clock_time": 23.632898, "process_in_blocks": "528", "process_kernel_time": 2.502271, "process_mem_max_rss": "222132", "process_out_blocks": "2480", "process_user_time": 6.629811}
+[0m17:52:12.008098 [debug] [MainThread]: Command `dbt build` failed at 17:52:12.007899 after 23.63 seconds
+[0m17:52:12.009022 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72a98fb0f4d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72a993aaa750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72a98fd82d50>]}
+[0m17:52:12.010163 [debug] [MainThread]: Flushing usage events
+[0m17:52:12.973668 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:52:19.130983 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d7a898e30d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d7a8af46210>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d7a89b7c390>]}
+
+
+============================== 17:52:19.137926 | 019e700a-3fdd-43d1-8e80-91856771e641 ==============================
+[0m17:52:19.137926 [info ] [MainThread]: Running with dbt=1.9.2
+[0m17:52:19.138773 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/airflow/.dbt', 'debug': 'False', 'version_check': 'True', 'log_path': '/opt/airflow/dbt/logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt docs generate', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m17:52:19.869534 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '019e700a-3fdd-43d1-8e80-91856771e641', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d7a88ec5b90>]}
+[0m17:52:19.933176 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '019e700a-3fdd-43d1-8e80-91856771e641', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d7a8bba0e90>]}
+[0m17:52:19.934170 [info ] [MainThread]: Registered adapter: athena=1.9.4
+[0m17:52:20.083584 [debug] [MainThread]: checksum: 12b12750b70de726cfd89136b8e24afc3f3e77597a97bff40ab7e5f9b39d5e18, vars: {}, profile: , target: , version: 1.9.2
+[0m17:52:20.223391 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m17:52:20.223965 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m17:52:20.281557 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '019e700a-3fdd-43d1-8e80-91856771e641', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d7a876ac190>]}
+[0m17:52:20.299458 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '019e700a-3fdd-43d1-8e80-91856771e641', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d7a87695bd0>]}
+[0m17:52:20.300173 [info ] [MainThread]: Found 3 models, 4 data tests, 1 source, 511 macros
+[0m17:52:20.300676 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '019e700a-3fdd-43d1-8e80-91856771e641', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d7a89a93f10>]}
+[0m17:52:20.303056 [info ] [MainThread]: 
+[0m17:52:20.303696 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:52:20.304370 [info ] [MainThread]: 
+[0m17:52:20.305165 [debug] [MainThread]: Acquiring new athena connection 'master'
+[0m17:52:20.312966 [debug] [ThreadPool]: Acquiring new athena connection 'list_AwsDataCatalog_analytics'
+[0m17:52:20.313849 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:52:22.119964 [debug] [ThreadPool]: On list_AwsDataCatalog_analytics: Close
+[0m17:52:22.121945 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '019e700a-3fdd-43d1-8e80-91856771e641', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d7a8797e9d0>]}
+[0m17:52:22.132947 [debug] [Thread-1 (]: Began running node model.aws_local_elt.example
+[0m17:52:22.133575 [debug] [Thread-2 (]: Began running node model.aws_local_elt.orders_clean
+[0m17:52:22.134346 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_AwsDataCatalog_analytics, now model.aws_local_elt.example)
+[0m17:52:22.134907 [debug] [Thread-3 (]: Began running node model.aws_local_elt.processed_orders
+[0m17:52:22.135709 [debug] [Thread-2 (]: Acquiring new athena connection 'model.aws_local_elt.orders_clean'
+[0m17:52:22.136311 [debug] [Thread-1 (]: Began compiling node model.aws_local_elt.example
+[0m17:52:22.137037 [debug] [Thread-3 (]: Acquiring new athena connection 'model.aws_local_elt.processed_orders'
+[0m17:52:22.137616 [debug] [Thread-2 (]: Began compiling node model.aws_local_elt.orders_clean
+[0m17:52:22.146763 [debug] [Thread-1 (]: Writing injected SQL for node "model.aws_local_elt.example"
+[0m17:52:22.147560 [debug] [Thread-3 (]: Began compiling node model.aws_local_elt.processed_orders
+[0m17:52:22.151357 [debug] [Thread-2 (]: Writing injected SQL for node "model.aws_local_elt.orders_clean"
+[0m17:52:22.155083 [debug] [Thread-3 (]: Writing injected SQL for node "model.aws_local_elt.processed_orders"
+[0m17:52:22.155920 [debug] [Thread-1 (]: Began executing node model.aws_local_elt.example
+[0m17:52:22.157366 [debug] [Thread-1 (]: Finished running node model.aws_local_elt.example
+[0m17:52:22.158668 [debug] [Thread-3 (]: Began executing node model.aws_local_elt.processed_orders
+[0m17:52:22.159270 [debug] [Thread-2 (]: Began executing node model.aws_local_elt.orders_clean
+[0m17:52:22.160179 [debug] [Thread-3 (]: Finished running node model.aws_local_elt.processed_orders
+[0m17:52:22.161104 [debug] [Thread-2 (]: Finished running node model.aws_local_elt.orders_clean
+[0m17:52:22.163009 [debug] [Thread-4 (]: Began running node test.aws_local_elt.not_null_orders_clean_amount.091b8d0018
+[0m17:52:22.163619 [debug] [Thread-1 (]: Began running node test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720
+[0m17:52:22.164291 [debug] [Thread-4 (]: Acquiring new athena connection 'test.aws_local_elt.not_null_orders_clean_amount.091b8d0018'
+[0m17:52:22.164815 [debug] [Thread-3 (]: Began running node test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de
+[0m17:52:22.165444 [debug] [Thread-2 (]: Began running node test.aws_local_elt.unique_orders_clean_order_id.a141020452
+[0m17:52:22.166021 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.aws_local_elt.example, now test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720)
+[0m17:52:22.166619 [debug] [Thread-4 (]: Began compiling node test.aws_local_elt.not_null_orders_clean_amount.091b8d0018
+[0m17:52:22.167288 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.aws_local_elt.processed_orders, now test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de)
+[0m17:52:22.167920 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.aws_local_elt.orders_clean, now test.aws_local_elt.unique_orders_clean_order_id.a141020452)
+[0m17:52:22.168522 [debug] [Thread-1 (]: Began compiling node test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720
+[0m17:52:22.183125 [debug] [Thread-4 (]: Writing injected SQL for node "test.aws_local_elt.not_null_orders_clean_amount.091b8d0018"
+[0m17:52:22.183825 [debug] [Thread-3 (]: Began compiling node test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de
+[0m17:52:22.184432 [debug] [Thread-2 (]: Began compiling node test.aws_local_elt.unique_orders_clean_order_id.a141020452
+[0m17:52:22.188900 [debug] [Thread-1 (]: Writing injected SQL for node "test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720"
+[0m17:52:22.193903 [debug] [Thread-3 (]: Writing injected SQL for node "test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de"
+[0m17:52:22.194644 [debug] [Thread-4 (]: Began executing node test.aws_local_elt.not_null_orders_clean_amount.091b8d0018
+[0m17:52:22.202490 [debug] [Thread-2 (]: Writing injected SQL for node "test.aws_local_elt.unique_orders_clean_order_id.a141020452"
+[0m17:52:22.205468 [debug] [Thread-4 (]: Finished running node test.aws_local_elt.not_null_orders_clean_amount.091b8d0018
+[0m17:52:22.206127 [debug] [Thread-1 (]: Began executing node test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720
+[0m17:52:22.206838 [debug] [Thread-3 (]: Began executing node test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de
+[0m17:52:22.208966 [debug] [Thread-1 (]: Finished running node test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720
+[0m17:52:22.209854 [debug] [Thread-2 (]: Began executing node test.aws_local_elt.unique_orders_clean_order_id.a141020452
+[0m17:52:22.210897 [debug] [Thread-3 (]: Finished running node test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de
+[0m17:52:22.212449 [debug] [Thread-2 (]: Finished running node test.aws_local_elt.unique_orders_clean_order_id.a141020452
+[0m17:52:22.215414 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:52:22.215901 [debug] [MainThread]: Connection 'test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720' was properly closed.
+[0m17:52:22.216288 [debug] [MainThread]: Connection 'test.aws_local_elt.unique_orders_clean_order_id.a141020452' was properly closed.
+[0m17:52:22.216655 [debug] [MainThread]: Connection 'test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de' was properly closed.
+[0m17:52:22.217051 [debug] [MainThread]: Connection 'test.aws_local_elt.not_null_orders_clean_amount.091b8d0018' was properly closed.
+[0m17:52:22.218552 [debug] [MainThread]: Command end result
+[0m17:52:22.342080 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m17:52:22.345210 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m17:52:22.373986 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m17:52:22.384921 [debug] [MainThread]: Acquiring new athena connection 'generate_catalog'
+[0m17:52:22.385982 [info ] [MainThread]: Building catalog
+[0m17:52:22.399781 [debug] [ThreadPool]: Acquiring new athena connection 'AwsDataCatalog.information_schema'
+[0m17:52:22.400686 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:52:23.959134 [debug] [ThreadPool]: dbt.adapters.athena.constants adapter: table_name : 657552582906.analytics.orders_clean
+[0m17:52:23.959989 [debug] [ThreadPool]: dbt.adapters.athena.constants adapter: table type : TableType.TABLE
+[0m17:52:23.960682 [debug] [ThreadPool]: dbt.adapters.athena.constants adapter: table_name : 657552582906.analytics.orders_raw
+[0m17:52:23.961291 [debug] [ThreadPool]: dbt.adapters.athena.constants adapter: table type : TableType.TABLE
+[0m17:52:23.961884 [debug] [ThreadPool]: dbt.adapters.athena.constants adapter: table_name : 657552582906.analytics.orders_summary
+[0m17:52:23.962380 [debug] [ThreadPool]: dbt.adapters.athena.constants adapter: table type : TableType.TABLE
+[0m17:52:23.962834 [debug] [ThreadPool]: dbt.adapters.athena.constants adapter: table_name : 657552582906.analytics.raw_orders
+[0m17:52:23.963261 [debug] [ThreadPool]: dbt.adapters.athena.constants adapter: table type : TableType.TABLE
+[0m17:52:23.973592 [debug] [ThreadPool]: On AwsDataCatalog.information_schema: Close
+[0m17:52:23.984780 [debug] [MainThread]: Wrote artifact CatalogArtifact to /opt/airflow/dbt/target/catalog.json
+[0m17:52:24.017049 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m17:52:24.018866 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m17:52:24.019362 [info ] [MainThread]: Catalog written to /opt/airflow/dbt/target/catalog.json
+[0m17:52:24.020745 [debug] [MainThread]: Resource report: {"command_name": "generate", "command_success": true, "command_wall_clock_time": 4.9476905, "process_in_blocks": "3432", "process_kernel_time": 0.690135, "process_mem_max_rss": "182992", "process_out_blocks": "5768", "process_user_time": 3.765474}
+[0m17:52:24.021867 [debug] [MainThread]: Command `dbt docs generate` succeeded at 17:52:24.021655 after 4.95 seconds
+[0m17:52:24.022441 [debug] [MainThread]: Connection 'generate_catalog' was properly closed.
+[0m17:52:24.022951 [debug] [MainThread]: Connection 'AwsDataCatalog.information_schema' was properly closed.
+[0m17:52:24.023697 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d7a8da70510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d7a898e2c50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d7a8af26f90>]}
+[0m17:52:24.024313 [debug] [MainThread]: Flushing usage events
+[0m17:52:24.774344 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m18:05:22.900225 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a2ea19fe10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a2ea19e0d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a2ea19e890>]}
+
+
+============================== 18:05:22.907338 | 1b97d090-a669-48a6-befc-867ca5809111 ==============================
+[0m18:05:22.907338 [info ] [MainThread]: Running with dbt=1.9.2
+[0m18:05:22.907994 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/airflow/.dbt', 'debug': 'False', 'version_check': 'True', 'log_path': '/opt/airflow/dbt/logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'True', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt compile --select aws_local_elt.processed.orders_clean -q', 'send_anonymous_usage_stats': 'True'}
+[0m18:05:23.562559 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '1b97d090-a669-48a6-befc-867ca5809111', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a2e7deb450>]}
+[0m18:05:23.624100 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '1b97d090-a669-48a6-befc-867ca5809111', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a2ec336e90>]}
+[0m18:05:23.625098 [info ] [MainThread]: Registered adapter: athena=1.9.4
+[0m18:05:23.750801 [debug] [MainThread]: checksum: 12b12750b70de726cfd89136b8e24afc3f3e77597a97bff40ab7e5f9b39d5e18, vars: {}, profile: , target: , version: 1.9.2
+[0m18:05:23.935382 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m18:05:23.936586 [debug] [MainThread]: Partial parsing: updated file: aws_local_elt://models/processed/orders_clean.sql
+[0m18:05:24.506399 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '1b97d090-a669-48a6-befc-867ca5809111', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a2e7a75c10>]}
+[0m18:05:24.605205 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m18:05:24.607320 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m18:05:24.621428 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '1b97d090-a669-48a6-befc-867ca5809111', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a2e77f6810>]}
+[0m18:05:24.622200 [info ] [MainThread]: Found 3 models, 4 data tests, 1 source, 511 macros
+[0m18:05:24.622638 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1b97d090-a669-48a6-befc-867ca5809111', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a2ebeab9d0>]}
+[0m18:05:24.624548 [info ] [MainThread]: 
+[0m18:05:24.625061 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m18:05:24.625453 [info ] [MainThread]: 
+[0m18:05:24.626120 [debug] [MainThread]: Acquiring new athena connection 'master'
+[0m18:05:24.632720 [debug] [ThreadPool]: Acquiring new athena connection 'list_AwsDataCatalog_analytics'
+[0m18:05:24.633449 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m18:05:26.586512 [debug] [ThreadPool]: On list_AwsDataCatalog_analytics: Close
+[0m18:05:26.588454 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1b97d090-a669-48a6-befc-867ca5809111', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a2e6d4a590>]}
+[0m18:05:26.600181 [debug] [Thread-1 (]: Began running node model.aws_local_elt.orders_clean
+[0m18:05:26.601021 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_AwsDataCatalog_analytics, now model.aws_local_elt.orders_clean)
+[0m18:05:26.601512 [debug] [Thread-1 (]: Began compiling node model.aws_local_elt.orders_clean
+[0m18:05:26.612019 [debug] [Thread-1 (]: Writing injected SQL for node "model.aws_local_elt.orders_clean"
+[0m18:05:26.612814 [debug] [Thread-1 (]: Began executing node model.aws_local_elt.orders_clean
+[0m18:05:26.613786 [debug] [Thread-1 (]: Finished running node model.aws_local_elt.orders_clean
+[0m18:05:26.615162 [debug] [Thread-3 (]: Began running node test.aws_local_elt.not_null_orders_clean_amount.091b8d0018
+[0m18:05:26.616038 [debug] [Thread-3 (]: Acquiring new athena connection 'test.aws_local_elt.not_null_orders_clean_amount.091b8d0018'
+[0m18:05:26.616679 [debug] [Thread-3 (]: Began compiling node test.aws_local_elt.not_null_orders_clean_amount.091b8d0018
+[0m18:05:26.622642 [debug] [Thread-4 (]: Began running node test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720
+[0m18:05:26.623788 [debug] [Thread-2 (]: Began running node test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de
+[0m18:05:26.624479 [debug] [Thread-4 (]: Acquiring new athena connection 'test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720'
+[0m18:05:26.631874 [debug] [Thread-3 (]: Writing injected SQL for node "test.aws_local_elt.not_null_orders_clean_amount.091b8d0018"
+[0m18:05:26.632681 [debug] [Thread-1 (]: Began running node test.aws_local_elt.unique_orders_clean_order_id.a141020452
+[0m18:05:26.633472 [debug] [Thread-2 (]: Acquiring new athena connection 'test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de'
+[0m18:05:26.634107 [debug] [Thread-4 (]: Began compiling node test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720
+[0m18:05:26.635052 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.aws_local_elt.orders_clean, now test.aws_local_elt.unique_orders_clean_order_id.a141020452)
+[0m18:05:26.636095 [debug] [Thread-2 (]: Began compiling node test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de
+[0m18:05:26.636941 [debug] [Thread-3 (]: Began executing node test.aws_local_elt.not_null_orders_clean_amount.091b8d0018
+[0m18:05:26.642359 [debug] [Thread-4 (]: Writing injected SQL for node "test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720"
+[0m18:05:26.643086 [debug] [Thread-1 (]: Began compiling node test.aws_local_elt.unique_orders_clean_order_id.a141020452
+[0m18:05:26.648755 [debug] [Thread-2 (]: Writing injected SQL for node "test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de"
+[0m18:05:26.650176 [debug] [Thread-3 (]: Finished running node test.aws_local_elt.not_null_orders_clean_amount.091b8d0018
+[0m18:05:26.656922 [debug] [Thread-4 (]: Began executing node test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720
+[0m18:05:26.659823 [debug] [Thread-1 (]: Writing injected SQL for node "test.aws_local_elt.unique_orders_clean_order_id.a141020452"
+[0m18:05:26.662223 [debug] [Thread-4 (]: Finished running node test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720
+[0m18:05:26.662817 [debug] [Thread-2 (]: Began executing node test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de
+[0m18:05:26.664879 [debug] [Thread-2 (]: Finished running node test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de
+[0m18:05:26.665965 [debug] [Thread-1 (]: Began executing node test.aws_local_elt.unique_orders_clean_order_id.a141020452
+[0m18:05:26.666966 [debug] [Thread-1 (]: Finished running node test.aws_local_elt.unique_orders_clean_order_id.a141020452
+[0m18:05:26.669799 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m18:05:26.670568 [debug] [MainThread]: Connection 'test.aws_local_elt.unique_orders_clean_order_id.a141020452' was properly closed.
+[0m18:05:26.671043 [debug] [MainThread]: Connection 'test.aws_local_elt.not_null_orders_clean_amount.091b8d0018' was properly closed.
+[0m18:05:26.671465 [debug] [MainThread]: Connection 'test.aws_local_elt.not_null_orders_clean_customer_id.8331ef9720' was properly closed.
+[0m18:05:26.671863 [debug] [MainThread]: Connection 'test.aws_local_elt.not_null_orders_clean_order_id.be6c1714de' was properly closed.
+[0m18:05:26.673815 [debug] [MainThread]: Command end result
+[0m18:05:26.706846 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m18:05:26.708791 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m18:05:26.716000 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m18:05:26.716523 [debug] [MainThread]: Excluded node 'not_null_orders_clean_amount' from results
+[0m18:05:26.716920 [debug] [MainThread]: Excluded node 'not_null_orders_clean_customer_id' from results
+[0m18:05:26.717322 [debug] [MainThread]: Excluded node 'not_null_orders_clean_order_id' from results
+[0m18:05:26.717688 [debug] [MainThread]: Excluded node 'unique_orders_clean_order_id' from results
+[0m18:05:26.718138 [info ] [MainThread]: -- models/processed/orders_clean.sql
+
+
+with src as (
+  select
+    cast(order_id as varchar)   as order_id,
+    cast(customer  as varchar)  as customer_id,
+    try(cast(amount as double)) as amount,
+    case
+      when dt is null or length(trim(dt)) = 0 then null
+      else try(cast(trim(dt) as date))
+    end                         as dt
+  from "AwsDataCatalog"."analytics"."orders_raw"
+)
+
+select *
+from src
+
+  where dt > (select coalesce(max(dt), date '1900-01-01') from "AwsDataCatalog"."analytics"."orders_clean")
+
+[0m18:05:26.719799 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": true, "command_wall_clock_time": 3.892806, "process_in_blocks": "0", "process_kernel_time": 0.627592, "process_mem_max_rss": "166940", "process_out_blocks": "3576", "process_user_time": 4.24924}
+[0m18:05:26.720524 [debug] [MainThread]: Command `dbt compile` succeeded at 18:05:26.720399 after 3.89 seconds
+[0m18:05:26.721019 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a2ee13e790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a2ee13e710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a2ee1e3050>]}
+[0m18:05:26.721567 [debug] [MainThread]: Flushing usage events
+[0m18:05:27.673500 [debug] [MainThread]: An error was encountered while trying to flush usage events

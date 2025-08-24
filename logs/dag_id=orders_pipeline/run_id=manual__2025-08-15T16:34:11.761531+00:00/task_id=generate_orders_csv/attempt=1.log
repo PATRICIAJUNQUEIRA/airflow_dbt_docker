@@ -1,0 +1,17 @@
+[2025-08-15T16:34:13.546+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-15T16:34:13.598+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: orders_pipeline.generate_orders_csv manual__2025-08-15T16:34:11.761531+00:00 [queued]>
+[2025-08-15T16:34:13.615+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: orders_pipeline.generate_orders_csv manual__2025-08-15T16:34:11.761531+00:00 [queued]>
+[2025-08-15T16:34:13.616+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-15T16:34:13.644+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): generate_orders_csv> on 2025-08-15 16:34:11.761531+00:00
+[2025-08-15T16:34:13.656+0000] {standard_task_runner.py:64} INFO - Started process 70 to run task
+[2025-08-15T16:34:13.665+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'orders_pipeline', 'generate_orders_csv', 'manual__2025-08-15T16:34:11.761531+00:00', '--job-id', '38', '--raw', '--subdir', 'DAGS_FOLDER/orders_pipeline.py', '--cfg-path', '/tmp/tmpylh8edo0']
+[2025-08-15T16:34:13.668+0000] {standard_task_runner.py:91} INFO - Job 38: Subtask generate_orders_csv
+[2025-08-15T16:34:13.786+0000] {task_command.py:426} INFO - Running <TaskInstance: orders_pipeline.generate_orders_csv manual__2025-08-15T16:34:11.761531+00:00 [running]> on host 086c8585e9f7
+[2025-08-15T16:34:14.018+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='orders_pipeline' AIRFLOW_CTX_TASK_ID='generate_orders_csv' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T16:34:11.761531+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-15T16:34:11.761531+00:00'
+[2025-08-15T16:34:14.020+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-15T16:34:14.021+0000] {python.py:237} INFO - Done. Returned value was: {'key': 'raw-data/orders/dt=2025-08-15/orders.csv', 'body': 'order_id,customer,amount\r\n1,Alice,100.5\r\n2,Bob,250.0\r\n3,Carol,75.25\r\n'}
+[2025-08-15T16:34:14.022+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-15T16:34:14.091+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=orders_pipeline, task_id=generate_orders_csv, run_id=manual__2025-08-15T16:34:11.761531+00:00, execution_date=20250815T163411, start_date=20250815T163413, end_date=20250815T163414
+[2025-08-15T16:34:14.160+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-15T16:34:14.203+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-08-15T16:34:14.206+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

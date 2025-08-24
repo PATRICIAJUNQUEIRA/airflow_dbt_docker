@@ -1,0 +1,25 @@
+[2025-08-22T16:07:57.776+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-22T16:07:57.864+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: orders_pipeline.add_partition manual__2025-08-22T16:07:41+00:00 [queued]>
+[2025-08-22T16:07:57.897+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: orders_pipeline.add_partition manual__2025-08-22T16:07:41+00:00 [queued]>
+[2025-08-22T16:07:57.898+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-08-22T16:07:57.939+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): add_partition> on 2025-08-22 16:07:41+00:00
+[2025-08-22T16:07:57.953+0000] {standard_task_runner.py:64} INFO - Started process 133 to run task
+[2025-08-22T16:07:57.964+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'orders_pipeline', 'add_partition', 'manual__2025-08-22T16:07:41+00:00', '--job-id', '172', '--raw', '--subdir', 'DAGS_FOLDER/orders_pipeline.py', '--cfg-path', '/tmp/tmp87l7ul94']
+[2025-08-22T16:07:57.968+0000] {standard_task_runner.py:91} INFO - Job 172: Subtask add_partition
+[2025-08-22T16:07:58.139+0000] {task_command.py:426} INFO - Running <TaskInstance: orders_pipeline.add_partition manual__2025-08-22T16:07:41+00:00 [running]> on host 7ff1c03ded3b
+[2025-08-22T16:07:58.458+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='orders_pipeline' AIRFLOW_CTX_TASK_ID='add_partition' AIRFLOW_CTX_EXECUTION_DATE='2025-08-22T16:07:41+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-22T16:07:41+00:00'
+[2025-08-22T16:07:58.460+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-22T16:07:58.485+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-22T16:07:58.486+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'set -Eeuo pipefail -x; \nSQL="SELECT count(*) AS cnt FROM analytics.orders_raw;"\nQID=$(aws athena start-query-execution   --query-string "$SQL"   --query-execution-context "Database=$ATHENA_DB"   --work-group primary   --query \'QueryExecutionId\' --output text)\naws athena get-query-execution --query-execution-id "$QID" --query \'QueryExecution.Status.State\' --output text']
+[2025-08-22T16:07:58.507+0000] {subprocess.py:86} INFO - Output:
+[2025-08-22T16:07:58.509+0000] {subprocess.py:93} INFO - + SQL='SELECT count(*) AS cnt FROM analytics.orders_raw;'
+[2025-08-22T16:07:58.511+0000] {subprocess.py:93} INFO - ++ aws athena start-query-execution --query-string 'SELECT count(*) AS cnt FROM analytics.orders_raw;' --query-execution-context Database=analytics --work-group primary --query QueryExecutionId --output text
+[2025-08-22T16:08:01.022+0000] {subprocess.py:93} INFO - + QID=fb63c206-2851-4ffb-bb69-26b96f96bc75
+[2025-08-22T16:08:01.022+0000] {subprocess.py:93} INFO - + aws athena get-query-execution --query-execution-id fb63c206-2851-4ffb-bb69-26b96f96bc75 --query QueryExecution.Status.State --output text
+[2025-08-22T16:08:03.594+0000] {subprocess.py:93} INFO - SUCCEEDED
+[2025-08-22T16:08:03.814+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-08-22T16:08:03.815+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-22T16:08:03.850+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=orders_pipeline, task_id=add_partition, run_id=manual__2025-08-22T16:07:41+00:00, execution_date=20250822T160741, start_date=20250822T160757, end_date=20250822T160803
+[2025-08-22T16:08:03.918+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-22T16:08:04.042+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-22T16:08:04.050+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,27 @@
+[2025-08-13T19:55:29.184+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-13T19:55:29.207+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: orders_pipeline.drop_orders_summary_if_exists manual__2025-08-13T19:55:12+00:00 [queued]>
+[2025-08-13T19:55:29.216+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: orders_pipeline.drop_orders_summary_if_exists manual__2025-08-13T19:55:12+00:00 [queued]>
+[2025-08-13T19:55:29.216+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-13T19:55:29.231+0000] {taskinstance.py:2330} INFO - Executing <Task(AthenaOperator): drop_orders_summary_if_exists> on 2025-08-13 19:55:12+00:00
+[2025-08-13T19:55:29.238+0000] {standard_task_runner.py:64} INFO - Started process 96 to run task
+[2025-08-13T19:55:29.242+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'orders_pipeline', 'drop_orders_summary_if_exists', 'manual__2025-08-13T19:55:12+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/orders_pipeline.py', '--cfg-path', '/tmp/tmpq8kstb1r']
+[2025-08-13T19:55:29.244+0000] {standard_task_runner.py:91} INFO - Job 16: Subtask drop_orders_summary_if_exists
+[2025-08-13T19:55:29.316+0000] {task_command.py:426} INFO - Running <TaskInstance: orders_pipeline.drop_orders_summary_if_exists manual__2025-08-13T19:55:12+00:00 [running]> on host fb6a3d62f72f
+[2025-08-13T19:55:29.455+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-eng' AIRFLOW_CTX_DAG_ID='orders_pipeline' AIRFLOW_CTX_TASK_ID='drop_orders_summary_if_exists' AIRFLOW_CTX_EXECUTION_DATE='2025-08-13T19:55:12+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-13T19:55:12+00:00'
+[2025-08-13T19:55:29.456+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-13T19:55:29.469+0000] {athena.py:132} INFO - Running Query with params:
+	QueryString: 
+		DROP TABLE IF EXISTS analytics.orders_summary;
+	QueryExecutionContext: {'Database': 'analytics', 'Catalog': 'AwsDataCatalog'}
+	ResultConfiguration: {'OutputLocation': 's3://pt-data-lab/athena-staging/'}
+	WorkGroup: primary
+[2025-08-13T19:55:29.484+0000] {base_aws.py:587} WARNING - Unable to find AWS Connection ID 'aws_default', switching to empty.
+[2025-08-13T19:55:29.485+0000] {base_aws.py:164} INFO - No connection ID provided. Fallback on boto3 credential strategy (region_name=None). See: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
+[2025-08-13T19:55:29.808+0000] {credentials.py:1147} INFO - Found credentials in environment variables.
+[2025-08-13T19:55:30.763+0000] {athena.py:135} INFO - Query execution id: e36f12cf-7b20-4602-9701-2f1066828aae
+[2025-08-13T19:55:30.975+0000] {waiter_with_logging.py:78} INFO - Query execution id: e36f12cf-7b20-4602-9701-2f1066828aae, Query is still in non-terminal state: RUNNING
+[2025-08-13T19:55:34.523+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-13T19:55:34.556+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=orders_pipeline, task_id=drop_orders_summary_if_exists, run_id=manual__2025-08-13T19:55:12+00:00, execution_date=20250813T195512, start_date=20250813T195529, end_date=20250813T195534
+[2025-08-13T19:55:34.593+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-13T19:55:34.626+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-08-13T19:55:34.630+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

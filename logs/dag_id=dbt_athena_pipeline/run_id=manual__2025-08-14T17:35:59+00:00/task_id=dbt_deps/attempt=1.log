@@ -1,0 +1,24 @@
+[2025-08-14T17:36:00.707+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-14T17:36:00.741+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.dbt_deps manual__2025-08-14T17:35:59+00:00 [queued]>
+[2025-08-14T17:36:00.751+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.dbt_deps manual__2025-08-14T17:35:59+00:00 [queued]>
+[2025-08-14T17:36:00.752+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-14T17:36:00.773+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_deps> on 2025-08-14 17:35:59+00:00
+[2025-08-14T17:36:00.780+0000] {standard_task_runner.py:64} INFO - Started process 61 to run task
+[2025-08-14T17:36:00.785+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'dbt_deps', 'manual__2025-08-14T17:35:59+00:00', '--job-id', '26', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmp7paune33']
+[2025-08-14T17:36:00.787+0000] {standard_task_runner.py:91} INFO - Job 26: Subtask dbt_deps
+[2025-08-14T17:36:00.901+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.dbt_deps manual__2025-08-14T17:35:59+00:00 [running]> on host 27e97aa38404
+[2025-08-14T17:36:01.079+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-eng' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='dbt_deps' AIRFLOW_CTX_EXECUTION_DATE='2025-08-14T17:35:59+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-14T17:35:59+00:00'
+[2025-08-14T17:36:01.080+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-14T17:36:01.115+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-14T17:36:01.117+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n            set -euo pipefail\n            cd /opt/***/dbt\n            dbt deps --profiles-dir /opt/***/dbt/profiles\n        ']
+[2025-08-14T17:36:01.132+0000] {subprocess.py:86} INFO - Output:
+[2025-08-14T17:36:04.517+0000] {subprocess.py:93} INFO - [0m17:36:04  Running with dbt=1.7.19
+[2025-08-14T17:36:05.608+0000] {subprocess.py:93} INFO - [0m17:36:05  Installing dbt-labs/dbt_external_tables
+[2025-08-14T17:36:06.491+0000] {subprocess.py:93} INFO - [0m17:36:06  Installed from version 0.11.1
+[2025-08-14T17:36:06.492+0000] {subprocess.py:93} INFO - [0m17:36:06  Up to date!
+[2025-08-14T17:36:07.896+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-08-14T17:36:07.899+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-14T17:36:07.979+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=dbt_athena_pipeline, task_id=dbt_deps, run_id=manual__2025-08-14T17:35:59+00:00, execution_date=20250814T173559, start_date=20250814T173600, end_date=20250814T173607
+[2025-08-14T17:36:08.050+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-08-14T17:36:08.143+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-08-14T17:36:08.147+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

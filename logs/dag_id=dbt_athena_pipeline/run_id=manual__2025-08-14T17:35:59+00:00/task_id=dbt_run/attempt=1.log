@@ -1,0 +1,54 @@
+[2025-08-14T17:36:20.808+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-14T17:36:20.846+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dbt_athena_pipeline.dbt_run manual__2025-08-14T17:35:59+00:00 [queued]>
+[2025-08-14T17:36:20.858+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dbt_athena_pipeline.dbt_run manual__2025-08-14T17:35:59+00:00 [queued]>
+[2025-08-14T17:36:20.859+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-14T17:36:20.880+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_run> on 2025-08-14 17:35:59+00:00
+[2025-08-14T17:36:20.894+0000] {standard_task_runner.py:64} INFO - Started process 73 to run task
+[2025-08-14T17:36:20.899+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dbt_athena_pipeline', 'dbt_run', 'manual__2025-08-14T17:35:59+00:00', '--job-id', '28', '--raw', '--subdir', 'DAGS_FOLDER/dbt_athena_pipeline.py', '--cfg-path', '/tmp/tmpd_w_6_cj']
+[2025-08-14T17:36:20.901+0000] {standard_task_runner.py:91} INFO - Job 28: Subtask dbt_run
+[2025-08-14T17:36:21.024+0000] {task_command.py:426} INFO - Running <TaskInstance: dbt_athena_pipeline.dbt_run manual__2025-08-14T17:35:59+00:00 [running]> on host 27e97aa38404
+[2025-08-14T17:36:21.345+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-eng' AIRFLOW_CTX_DAG_ID='dbt_athena_pipeline' AIRFLOW_CTX_TASK_ID='dbt_run' AIRFLOW_CTX_EXECUTION_DATE='2025-08-14T17:35:59+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-14T17:35:59+00:00'
+[2025-08-14T17:36:21.346+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-14T17:36:21.367+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-14T17:36:21.368+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n            set -euo pipefail\n            cd /opt/***/dbt\n            dbt run --profiles-dir /opt/***/dbt/profiles --threads 4\n        ']
+[2025-08-14T17:36:21.393+0000] {subprocess.py:86} INFO - Output:
+[2025-08-14T17:36:24.578+0000] {subprocess.py:93} INFO - [0m17:36:24  Running with dbt=1.7.19
+[2025-08-14T17:36:25.534+0000] {subprocess.py:93} INFO - [0m17:36:25  Registered adapter: athena=1.7.2
+[2025-08-14T17:36:25.579+0000] {subprocess.py:93} INFO - [0m17:36:25  Unable to do partial parsing because saved manifest not found. Starting full parse.
+[2025-08-14T17:36:27.445+0000] {subprocess.py:93} INFO - [0m17:36:27  Found 1 model, 1 source, 0 exposures, 0 metrics, 477 macros, 0 groups, 0 semantic models
+[2025-08-14T17:36:27.447+0000] {subprocess.py:93} INFO - [0m17:36:27
+[2025-08-14T17:36:30.180+0000] {subprocess.py:93} INFO - [0m17:36:30  Concurrency: 4 threads (target='dev')
+[2025-08-14T17:36:30.181+0000] {subprocess.py:93} INFO - [0m17:36:30
+[2025-08-14T17:36:30.194+0000] {subprocess.py:93} INFO - [0m17:36:30  1 of 1 START sql table model analytics.processed_orders ........................ [RUN]
+[2025-08-14T17:37:06.963+0000] {subprocess.py:93} INFO - [0m17:37:06  [31mUnhandled error while executing [0m
+[2025-08-14T17:37:06.964+0000] {subprocess.py:93} INFO - SCHEMA_NOT_FOUND: line 14:3: Schema '${athena_db}' does not exist. You may need to manually clean the data at location 's3://pt-data-lab/athena-staging/tables/ba79b8ec-d540-4597-a194-babdfc5a2828' before retrying. Athena will not delete data in your account.
+[2025-08-14T17:37:06.969+0000] {subprocess.py:93} INFO - [0m17:37:06  1 of 1 ERROR creating sql table model analytics.processed_orders ............... [[31mERROR[0m in 36.77s]
+[2025-08-14T17:37:06.975+0000] {subprocess.py:93} INFO - [0m17:37:06
+[2025-08-14T17:37:06.975+0000] {subprocess.py:93} INFO - [0m17:37:06  Finished running 1 table model in 0 hours 0 minutes and 39.53 seconds (39.53s).
+[2025-08-14T17:37:06.988+0000] {subprocess.py:93} INFO - [0m17:37:06
+[2025-08-14T17:37:06.989+0000] {subprocess.py:93} INFO - [0m17:37:06  [31mCompleted with 1 error and 0 warnings:[0m
+[2025-08-14T17:37:06.989+0000] {subprocess.py:93} INFO - [0m17:37:06
+[2025-08-14T17:37:06.990+0000] {subprocess.py:93} INFO - [0m17:37:06    SCHEMA_NOT_FOUND: line 14:3: Schema '${athena_db}' does not exist. You may need to manually clean the data at location 's3://pt-data-lab/athena-staging/tables/ba79b8ec-d540-4597-a194-babdfc5a2828' before retrying. Athena will not delete data in your account.
+[2025-08-14T17:37:06.990+0000] {subprocess.py:93} INFO - [0m17:37:06
+[2025-08-14T17:37:06.991+0000] {subprocess.py:93} INFO - [0m17:37:06  Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
+[2025-08-14T17:37:08.256+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-08-14T17:37:08.257+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-14T17:37:08.276+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-08-14T17:37:08.281+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=dbt_athena_pipeline, task_id=dbt_run, run_id=manual__2025-08-14T17:35:59+00:00, execution_date=20250814T173559, start_date=20250814T173620, end_date=20250814T173708
+[2025-08-14T17:37:08.299+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 28 for task dbt_run (Bash command failed. The command returned a non-zero exit code 1.; 73)
+[2025-08-14T17:37:08.317+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2025-08-14T17:37:08.346+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-14T17:37:08.351+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

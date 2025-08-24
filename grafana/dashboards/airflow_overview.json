@@ -1,0 +1,48 @@
+{
+  "title": "Airflow Overview",
+  "uid": "airflow-overview",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": { "from": "now-1h", "to": "now" },
+  "timezone": "browser",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Task successes (10m)",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "targets": [
+        { "expr": "sum(increase(airflow_ti_successes[10m]))", "legendFormat": "successes" }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Task failures (10m)",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "targets": [
+        { "expr": "sum(increase(airflow_ti_failures[10m]))", "legendFormat": "failures" }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Scheduler heartbeat",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "targets": [
+        { "expr": "airflow_scheduler_heartbeat", "legendFormat": "heartbeat" }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Demo counter (5m)",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+      "targets": [
+        { "expr": "increase(demo_airflow_counter[5m])", "legendFormat": "demo" }
+      ]
+    }
+  ],
+  "annotations": {
+    "list": [
+      { "builtIn": 1, "type": "dashboard", "name": "Annotations & Alerts", "enable": true, "hide": true }
+    ]
+  }
+}
