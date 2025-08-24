@@ -5,9 +5,6 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
-env:
-  IMAGE_NAME: ghcr.io/${{ github.repository }}/airflow
-
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -36,5 +33,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ env.IMAGE_NAME }}:latest
-            ${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ghcr.io/${{ toLower(github.repository) }}/airflow:latest
+            ghcr.io/${{ toLower(github.repository) }}/airflow:${{ github.sha }}
