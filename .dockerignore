@@ -1,6 +1,10 @@
-.venv/
-venv/
+.venv
+.env
+logs
+data
 __pycache__/
-logs/
-*.sarif
-gitleaks_*.json
+*.pyc
+.git
+.gitignore
+.gitleaks_*
+secrets.*
