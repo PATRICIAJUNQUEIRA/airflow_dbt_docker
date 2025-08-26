@@ -1,48 +1,83 @@
-name: Docker Build & Publish
+name: Docker Build & Publish (Airflow)
 
 on:
-  push:
-    branches: [ "main" ]
+  pull_request:
     paths:
-      - "docker/airflow/**"
-      - ".github/workflows/docker-build-publish.yml"
-      - "requirements.txt"
-  workflow_dispatch:
+      - 'docker/airflow/**'
+      - 'dags/**'
+      - 'plugins/**'
+      - 'dbt/**'
+      - 'docker-compose.yml'
+      - 'docker/airflow/Dockerfile'
+      - '.github/workflows/docker-build-publish.yml'
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'                           # publica também quando criar tag vX.Y.Z
+    paths:
+      - 'docker/airflow/**'
+      - 'dags/**'
+      - 'plugins/**'
+      - 'dbt/**'
+      - 'docker-compose.yml'
+      - 'docker/airflow/Dockerfile'
+      - '.github/workflows/docker-build-publish.yml'
+  release:
+    types: [ published ]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  packages: write
 
 jobs:
-  build-and-push:
+  docker:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
-    concurrency:
-      group: ghcr-build-${{ github.ref }}
-      cancel-in-progress: true
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Lowercase image name
-        run: echo "IMAGE_NAME=ghcr.io/${GITHUB_REPOSITORY,,}/airflow" >> "$GITHUB_ENV"
+      - name: Normalize owner (lowercase for GHCR)
+        id: owner
+        run: |
+          OWNER_LOWER="$(echo "${GITHUB_REPOSITORY_OWNER}" | tr '[:upper:]' '[:lower:]')"
+          echo "OWNER_LOWER=$OWNER_LOWER" >> "$GITHUB_ENV"
+          echo "image=ghcr.io/${OWNER_LOWER}/airflow" >> "$GITHUB_OUTPUT"
 
-      - uses: docker/setup-buildx-action@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # só loga (e permite push) fora de PR
       - name: Login to GHCR
+        if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
+          username: ${{ env.OWNER_LOWER }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push
-        uses: docker/build-push-action@v6
+      - name: Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ steps.owner.outputs.image }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,format=long
+            type=ref,event=tag
+
+      - name: Build (and push if not PR)
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: docker/airflow/Dockerfile
-          push: true
-          tags: |
-            ${{ env.IMAGE_NAME }}:latest
-            ${{ env.IMAGE_NAME }}:${{ github.sha }}
+          push: ${{ github.event_name != 'pull_request' }}
+          platforms: linux/amd64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

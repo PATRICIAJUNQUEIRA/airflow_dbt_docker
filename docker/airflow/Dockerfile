@@ -24,8 +24,7 @@ RUN python -m pip install --no-cache-dir \
     dbt-athena-community==1.9.4 \
     awscli
 
-# deps extras do projeto (unificada na raiz)
-COPY requirements.txt /tmp/requirements.txt
-RUN if [ -s /tmp/requirements.txt ]; then \
-      pip install --no-cache-dir -r /tmp/requirements.txt; \
-    fi
+# copie seus artefatos (sem barra inicial no lado esquerdo)
+COPY dags/ /opt/airflow/dags/
+COPY plugins/ /opt/airflow/plugins/
+COPY dbt/ /opt/airflow/dbt/
