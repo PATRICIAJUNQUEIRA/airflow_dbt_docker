@@ -25,9 +25,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install dbt-core==1.9.2 dbt-athena-community==1.9.4
 
-      # Cria um profiles.yml dummy com DOIS perfis:
-      # - default  (muitos projetos usam 'profile: default' no dbt_project.yml)
-      # - ci       (se você preferir apontar para ele futuramente)
+      # Perfis dummy para o parse funcionar mesmo sem warehouse
       - name: Ensure dummy profiles.yml (default & ci)
         run: |
           mkdir -p dbt/profiles
@@ -54,12 +52,15 @@ jobs:
                 work_group: primary
             target: default
           YAML
-          echo "profiles.yml created:"
-          cat dbt/profiles/profiles.yml
 
       - name: dbt deps & parse (no warehouse)
         env:
           DBT_PROFILES_DIR: ./dbt/profiles
+          S3_BUCKET: dummy
+          GLUE_DATABASE: dummy
+          ATHENA_WORKGROUP: primary
+          ATHENA_STAGING_S3: s3://dummy
+          AWS_REGION: us-east-2
         run: |
           dbt --version
           if [ -f dbt/dbt_project.yml ]; then
