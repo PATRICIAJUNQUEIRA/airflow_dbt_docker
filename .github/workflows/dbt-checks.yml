@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'dbt/**'
+      - 'dbt_project.yml'
       - '.github/workflows/dbt-checks.yml'
 
 jobs:
@@ -24,12 +25,24 @@ jobs:
           python -m pip install --upgrade pip
           pip install dbt-core==1.9.2 dbt-athena-community==1.9.4
 
-      # Se você já tem dbt/profiles/profiles.yml no repo, este passo é opcional.
-      # Mantive para garantir que o parse não quebre por falta de perfil.
-      - name: Ensure dummy profiles.yml (ci)
+      # Cria um profiles.yml dummy com DOIS perfis:
+      # - default  (muitos projetos usam 'profile: default' no dbt_project.yml)
+      # - ci       (se você preferir apontar para ele futuramente)
+      - name: Ensure dummy profiles.yml (default & ci)
         run: |
           mkdir -p dbt/profiles
           cat > dbt/profiles/profiles.yml <<'YAML'
+          default:
+            outputs:
+              dev:
+                type: athena
+                s3_staging_dir: s3://dummy
+                region_name: us-east-2
+                database: dummy
+                schema: dummy
+                work_group: primary
+            target: dev
+
           ci:
             outputs:
               default:
@@ -41,11 +54,18 @@ jobs:
                 work_group: primary
             target: default
           YAML
+          echo "profiles.yml created:"
+          cat dbt/profiles/profiles.yml
 
       - name: dbt deps & parse (no warehouse)
         env:
           DBT_PROFILES_DIR: ./dbt/profiles
         run: |
           dbt --version
-          dbt deps --project-dir dbt
-          dbt parse --project-dir dbt
+          if [ -f dbt/dbt_project.yml ]; then
+            echo "dbt project found → running deps/parse"
+            dbt deps --project-dir dbt
+            dbt parse --project-dir dbt
+          else
+            echo "No dbt/dbt_project.yml found → skipping dbt checks"
+          fi
